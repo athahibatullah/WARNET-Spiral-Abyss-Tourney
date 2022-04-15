@@ -6,7 +6,8 @@ export const Pick = () => {
     <>
       <Header/>
       <Picked/>
-      {/* <Choose/> */}
+      <br></br><br></br><br></br><br></br>
+      <Choose/>
     </>
   )
 }

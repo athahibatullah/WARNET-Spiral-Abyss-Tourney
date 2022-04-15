@@ -5,6 +5,7 @@ import './Content.css';
 export const Header = () => {
     return (
       <h1>WARNET</h1>
+    // <img src={require('../asset/logo_warnet.png')}></img>
     )
   }
 
@@ -63,22 +64,40 @@ export const Picked = () => {
 }
 
 export const Choose = () =>{
+    const importAll = (r) => {
+        return r.keys().map(r);
+      };
+      
+      const allData = importAll(
+        require.context("../asset/Character Card", false, /\.png$/)
+      )
     return (
         <div className='containerChoose'>
-            <div className='pickedCharA'>
+            <div className='pickedChar'>
                 <img src={require('../asset/Character Card/mona_face.png')}></img>
                 <img src={require('../asset/Character Card/ayaka_face.png')}></img>
                 <img src={require('../asset/Character Card/kazuha_face.png')}></img>
                 <img src={require('../asset/Character Card/diona_face.png')}></img>
             </div>
-            <div className='chooseCharA'>
-
+            <div className='chooseChar'>
+                {
+                    allData.map(image => (
+                        <img src={image}></img>
+                    ))
+                }
             </div>
-            <div className='chooseCharB'>
-
+            <div className='chooseChar'>
+                {
+                    allData.map(image => (
+                        <img src={image}></img>
+                    ))
+                }
             </div>
-            <div className='pickedCharB'>
-
+            <div className='pickedChar'>
+                <img src={require('../asset/Character Card/mona_face.png')}></img>
+                <img src={require('../asset/Character Card/ayaka_face.png')}></img>
+                <img src={require('../asset/Character Card/kazuha_face.png')}></img>
+                <img src={require('../asset/Character Card/diona_face.png')}></img>
             </div>
         </div>
     )
