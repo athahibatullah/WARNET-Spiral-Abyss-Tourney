@@ -1,7 +1,12 @@
 import React from 'react'
+import { Header,Picked,Choose } from './Content'
 
 export const Pick = () => {
-  return (
-    <div>Pick</div>
+  return(
+    <>
+      <Header/>
+      <Picked/>
+      {/* <Choose/> */}
+    </>
   )
 }
