@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import { Pick } from './PickChara/Pick';
 
 function App() {
   return (
