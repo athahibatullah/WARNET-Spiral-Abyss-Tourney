@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header,Picked,Choose } from './Content'
+import { Header,Picked} from './Content'
 
 export const Pick = () => {
   return(
@@ -7,7 +7,6 @@ export const Pick = () => {
       <Header/>
       <Picked/>
       <br></br><br></br><br></br><br></br>
-      <Choose/>
     </>
   )
 }
