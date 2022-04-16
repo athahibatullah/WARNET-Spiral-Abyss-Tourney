@@ -1,8 +1,7 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Countdown from 'react-countdown';
 import './Content.css';
-import boopSfx from '../asset/Sound/Venti.ogg';
-
+import Select from 'react-select';
 export const Header = () => {
     return (
         <h1>WARNET</h1>
@@ -10,12 +9,19 @@ export const Header = () => {
     // <img src={require('../asset/logo_warnet.png')}></img>
     )
   }
-
+  localStorage.setItem('Chara1', '/static/media/albedo.5bc6986b2ac6597f0948.png');
+  let Chara1 = localStorage.getItem('Chara1')
   
 export const Picked = () => {
-    // const [play] = useSound(boopSfx);
-    // const d = {"venti": play}
-    
+    // const importAll = (r) => {
+    //     return r.keys().map(r);
+    //   };
+      
+    // const allData = importAll(
+    //     require.context("../asset/Character Card", false, /\.png$/)
+    // )
+    // console.log(allData)
+    // const [selectChar, setSelectChar] = useState(Chara1)
     const renderer = props => {
         return (
             <div>
@@ -31,14 +37,17 @@ export const Picked = () => {
             </div>
             <div className='playerA'>
                 <div className='teamOne'>
-                    <img src={require('../asset/Character Card/albedo.png')}></img>
+                    {/* <img src={require('../asset/Character Card/albedo.png')}></img>
                     <img src={require('../asset/Character Card/ayato.png')}></img>
                     <img src={require('../asset/Character Card/barbara.png')}></img>
-                    <img src={require('../asset/Character Card/klee.png')}></img>
+                    <img src={require('../asset/Character Card/klee.png')}></img> */}
+                    <img src={Chara1} onClick={e => Choose('Chara1')}/>
+                    <img src={require('../asset/question.png')}/>
+                    <img src={require('../asset/question.png')}/>
+                    <img src={require('../asset/question.png')}/>
                 </div>
                 
                 <div className='teamTwoA'>
-                    {/* <img src={require('../asset/Character Card/venti.png')} onClick={d.venti}/> */}
                     <img src={require('../asset/Character Card/venti.png')}></img>
                     <img src={require('../asset/Character Card/ganyu.png')}></img>
                     <img src={require('../asset/Character Card/kokomi.png')}></img>
@@ -77,8 +86,8 @@ export const Picked = () => {
         </div>
     )
 }
-
-export const Choose = () =>{
+export const Choose = (cos) =>{
+    console.log(cos)
     const importAll = (r) => {
         return r.keys().map(r);
       };
@@ -99,6 +108,10 @@ export const Choose = () =>{
         );
         audio.play();
     }
+    function handleChoose(e, image, chosen){
+        e.preventDefault();
+        localStorage.setItem('Chara1', image)
+    }
     return (
         <div className='containerChoose'>
             <div className='teamsPicked'>
@@ -113,7 +126,7 @@ export const Choose = () =>{
             <div className='chooseChar'>
                 {
                     allData.map((image, index) => (
-                        <img src={image} key={characterId[index]} alt="character" onClick={e => handleSound(e, index)}></img>
+                        <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, 'Chara1'))}></img>
                     ))
                 }
             </div>
