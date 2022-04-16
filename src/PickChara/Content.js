@@ -1,16 +1,22 @@
 import React from 'react'
 import Countdown from 'react-countdown';
 import './Content.css';
+import useSound from 'use-sound';
+import boopSfx from '../asset/Sound/Venti_Joining_Party.ogg';
 
 export const Header = () => {
     return (
-      <h1>WARNET</h1>
+        <h1>WARNET</h1>
+        
     // <img src={require('../asset/logo_warnet.png')}></img>
     )
   }
 
   
 export const Picked = () => {
+    // const [play] = useSound(boopSfx);
+    // const d = {"venti": play}
+    
     const renderer = props => {
         return (
             <div>
@@ -33,6 +39,7 @@ export const Picked = () => {
                 </div>
                 
                 <div className='teamTwoA'>
+                    {/* <img src={require('../asset/Character Card/venti.png')} onClick={d.venti}/> */}
                     <img src={require('../asset/Character Card/venti.png')}></img>
                     <img src={require('../asset/Character Card/ganyu.png')}></img>
                     <img src={require('../asset/Character Card/kokomi.png')}></img>
@@ -73,6 +80,8 @@ export const Picked = () => {
 }
 
 export const Choose = () =>{
+    const [venti] = useSound(boopSfx);
+    const d = {"venti": venti}
     const importAll = (r) => {
         return r.keys().map(r);
       };
@@ -80,6 +89,9 @@ export const Choose = () =>{
       const allData = importAll(
         require.context("../asset/Character Card", false, /\.png$/)
       )
+    const characterId =  allData.map(image => (
+        (image.split('/'))[3].split('.')[0])
+    )
     return (
         <div className='containerChoose'>
             <div className='teamsPicked'>
@@ -93,8 +105,8 @@ export const Choose = () =>{
             </div>
             <div className='chooseChar'>
                 {
-                    allData.map(image => (
-                        <img src={image} key={(image.split('/'))[3].split('.')[0]} alt="character"></img>
+                    allData.map((image, index) => (
+                        <img src={image} key={(image.split('/'))[3].split('.')[0]} alt="character" onClick={d[characterId[index]]}></img>
                     ))
                 }
             </div>
