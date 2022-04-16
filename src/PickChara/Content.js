@@ -1,8 +1,7 @@
 import React from 'react'
 import Countdown from 'react-countdown';
 import './Content.css';
-import useSound from 'use-sound';
-import boopSfx from '../asset/Sound/Venti_Joining_Party.ogg';
+import boopSfx from '../asset/Sound/Venti.ogg';
 
 export const Header = () => {
     return (
@@ -80,18 +79,26 @@ export const Picked = () => {
 }
 
 export const Choose = () =>{
-    const [venti] = useSound(boopSfx);
-    const d = {"venti": venti}
     const importAll = (r) => {
         return r.keys().map(r);
       };
       
-      const allData = importAll(
+    const allData = importAll(
         require.context("../asset/Character Card", false, /\.png$/)
-      )
+    )
     const characterId =  allData.map(image => (
         (image.split('/'))[3].split('.')[0])
     )
+    const allSound = importAll(
+        require.context("../asset/Sound", false, /\.ogg$/)
+    )
+    function handleSound(e, index){
+        e.preventDefault();
+        const audio = new Audio(
+            allSound[index]
+        );
+        audio.play();
+    }
     return (
         <div className='containerChoose'>
             <div className='teamsPicked'>
@@ -106,14 +113,14 @@ export const Choose = () =>{
             <div className='chooseChar'>
                 {
                     allData.map((image, index) => (
-                        <img src={image} key={(image.split('/'))[3].split('.')[0]} alt="character" onClick={d[characterId[index]]}></img>
+                        <img src={image} key={characterId[index]} alt="character" onClick={e => handleSound(e, index)}></img>
                     ))
                 }
             </div>
             <div className='chooseChar'>
                 {
-                    allData.map(image => (
-                        <img src={image} key={(image.split('/'))[3].split('.')[0]} alt="character"></img>
+                    allData.map((image, index) => (
+                        <img src={image} key={characterId[index]} alt="character" onClick={e => handleSound(e, index)}></img>
                     ))
                 }
             </div>
