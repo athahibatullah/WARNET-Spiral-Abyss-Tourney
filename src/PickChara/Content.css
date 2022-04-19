@@ -94,3 +94,11 @@ h1{
     height: 50px;
     margin-top: 10vw;
 }
+.dropDown{
+    display: flex;
+    /* border: 1px solid #000; */
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 5vw;
+}

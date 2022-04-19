@@ -1,5 +1,4 @@
 import React , {useState, useRef, useEffect} from 'react'
-import Countdown from 'react-countdown';
 import './Content.css';
 export const Header = () => {
     return (
@@ -107,6 +106,43 @@ export const Picked = () => {
             else if(current == 'Char8') setpickChar8(image)
         }
     }
+    const options = [
+        { value: 'Kibadda', label: 'Kibadda' },
+        { value: 'iScav', label: 'iScav' },
+        { value: 'Godoffoy', label: 'Godoffoy' }
+      ]
+    const [selectedOption1, setSelectedOption1] = useState(options[0]); 
+    const [selectedOption2, setSelectedOption2] = useState(options[0]); 
+    const [charA, setCharA] = useState(['/static/media/albedo.5bc6986b2ac6597f0948.png', '/static/media/aloy.88c94da658a73c2bc26a.png', '/static/media/amber.e6a084025763093c8c20.png', '/static/media/ayaka.1a1863d4175ce915c3d7.png', '/static/media/ayato.308e6b746418f1c2c3b3.png', '/static/media/barbara.1bd9f6f88e5599b4e6fc.png'])
+    const [charB, setCharB] = useState(['/static/media/albedo.5bc6986b2ac6597f0948.png', '/static/media/aloy.88c94da658a73c2bc26a.png', '/static/media/amber.e6a084025763093c8c20.png', '/static/media/ayaka.1a1863d4175ce915c3d7.png', '/static/media/ayato.308e6b746418f1c2c3b3.png', '/static/media/barbara.1bd9f6f88e5599b4e6fc.png'])
+    let charaList = null
+    
+    function handleCharaList(e, account, team){
+        e.preventDefault()
+        setSelectedOption1(account)
+        setSelectedOption2(account)
+        if(account === 'Kibadda'){
+            charaList = importAll(
+                require.context('../asset/Kibadda', false, /\.png$/)
+            )
+            if(team == 'A') setCharA(charaList)
+            else if(team === 'B') setCharB(charaList)
+        }
+        else if(account === 'iScav'){
+            charaList = importAll(
+                require.context('../asset/iScav', false, /\.png$/)
+            )
+            if(team == 'A') setCharA(charaList)
+            else if(team === 'B') setCharB(charaList)
+        }
+        else if(account === 'Godoffoy'){
+            charaList = importAll(
+                require.context('../asset/Godoffoy', false, /\.png$/)
+            )
+            if(team == 'A') setCharA(charaList)
+            else if(team === 'B') setCharB(charaList)
+        }
+    }
 
     // We need ref in this, because we are dealing
     // with JS setInterval to keep track of it and
@@ -185,7 +221,6 @@ export const Picked = () => {
     const onClickReset = () => {
         clearTimer(getDeadTime());
     }
-      
     return (
         <>
             <div className='containerPicked'>
@@ -210,12 +245,6 @@ export const Picked = () => {
                 </div>
                 <div className='timer'>
                     <div>
-                    {/* <Countdown
-                        date={Date.now() + 5*60000}
-                        intervalDelay={0}
-                        renderer={renderer}
-                        zeroPadTime={2}
-                    /> */}
                      <div>{timer}</div>
             {/* <button onClick={onClickReset}>Reset</button> */}
                     <span className='timerinvs'>00:00</span>
@@ -239,7 +268,20 @@ export const Picked = () => {
                     <p>Team 1</p>
                     <p>Team 2</p>
                 </div>
+                <div className='dropDown'>
+                    <select onChange={e=>handleCharaList(e, e.target.value, 'A')}>
+                        {options.map((option) => (
+                            <option value={option.value} >{option.label}</option>
+                        ))}
+                    </select>
+                    <select onChange={e=>handleCharaList(e, e.target.value, 'B')}>
+                        {options.map((option) => (
+                            <option value={option.value} >{option.label}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
+            <br></br>
 
             <div className='containerChoose'>
                 <div className='teamsPicked'>
@@ -253,14 +295,20 @@ export const Picked = () => {
                 </div>
                 <div className='chooseChar'>
                     {
-                        allData.map((image, index) => (
+                        // allData.map((image, index) => (
+                        //     <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                        // ))
+                        charA.map((image, index) => (
                             <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
-                        allData.map((image, index) => (
+                        // allData.map((image, index) => (
+                        //     <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                        // ))
+                        charB.map((image, index) => (
                             <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
