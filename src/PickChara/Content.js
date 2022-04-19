@@ -53,16 +53,20 @@ export const Picked = () => {
     const allData = importAll(
         require.context("../asset/Character Card", false, /\.png$/)
     )
-    const characterId =  allData.map(image => (
-        (image.split('/'))[3].split('.')[0])
-    )
     const allSound = importAll(
         require.context("../asset/Sound", false, /\.ogg$/)
     )
-    function handleSound(e, index){
+    const soundId = allSound.map(sound =>(
+        (sound.split('/'))[3].split('.')[0].toLowerCase()
+    ))
+    let soundData = {}
+    for(let i=0;i<allSound.length;i++){
+        soundData[soundId[i]] = allSound[i]
+    }
+    function handleSound(e, index, sound){
         e.preventDefault();
         const audio = new Audio(
-            allSound[index]
+            sound[index]
         );
         audio.play();
     }
@@ -109,15 +113,26 @@ export const Picked = () => {
     const options = [
         { value: 'Kibadda', label: 'Kibadda' },
         { value: 'iScav', label: 'iScav' },
-        { value: 'Godoffoy', label: 'Godoffoy' }
+        { value: 'Godoffoy', label: 'Godoffoy' },
+        { value: 'Juleha', label: 'Juleha' }
       ]
     const [selectedOption1, setSelectedOption1] = useState(options[0]); 
     const [selectedOption2, setSelectedOption2] = useState(options[0]); 
-    const [charA, setCharA] = useState(['/static/media/albedo.5bc6986b2ac6597f0948.png', '/static/media/aloy.88c94da658a73c2bc26a.png', '/static/media/amber.e6a084025763093c8c20.png', '/static/media/ayaka.1a1863d4175ce915c3d7.png', '/static/media/ayato.308e6b746418f1c2c3b3.png', '/static/media/barbara.1bd9f6f88e5599b4e6fc.png'])
-    const [charB, setCharB] = useState(['/static/media/albedo.5bc6986b2ac6597f0948.png', '/static/media/aloy.88c94da658a73c2bc26a.png', '/static/media/amber.e6a084025763093c8c20.png', '/static/media/ayaka.1a1863d4175ce915c3d7.png', '/static/media/ayato.308e6b746418f1c2c3b3.png', '/static/media/barbara.1bd9f6f88e5599b4e6fc.png'])
-    let charaList = null
-    
+    const [charA, setCharA] = useState(allData)
+    const [charB, setCharB] = useState(allData)
+    const [soundA, setSoundA] = useState(allSound)
+    const [soundB, setSoundB] = useState(allSound)
+    const characterIdA =  charA.map(image => (
+        (image.split('/'))[3].split('.')[0])
+    )
+    const characterIdB =  charB.map(image => (
+        (image.split('/'))[3].split('.')[0])
+    )
+
     function handleCharaList(e, account, team){
+        let charaList = null
+        let charaSound = {}
+        let filterSoundId = []
         e.preventDefault()
         setSelectedOption1(account)
         setSelectedOption2(account)
@@ -125,22 +140,81 @@ export const Picked = () => {
             charaList = importAll(
                 require.context('../asset/Kibadda', false, /\.png$/)
             )
-            if(team == 'A') setCharA(charaList)
-            else if(team === 'B') setCharB(charaList)
+            for(let i=0;i<charaList.length;i++){
+                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
+            }
+            for(let i=0;i<filterSoundId.length;i++){
+                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
+            }
+
+            if(team == 'A'){
+                setCharA(charaList)
+                setSoundA(charaSound)
+            } 
+            else if(team === 'B'){
+                setCharB(charaList)
+                setSoundB(charaSound)
+            } 
         }
         else if(account === 'iScav'){
             charaList = importAll(
                 require.context('../asset/iScav', false, /\.png$/)
             )
-            if(team == 'A') setCharA(charaList)
-            else if(team === 'B') setCharB(charaList)
+            for(let i=0;i<charaList.length;i++){
+                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
+            }
+            for(let i=0;i<filterSoundId.length;i++){
+                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
+            }
+
+            if(team == 'A'){
+                setCharA(charaList)
+                setSoundA(charaSound)
+            } 
+            else if(team === 'B'){
+                setCharB(charaList)
+                setSoundB(charaSound)
+            } 
         }
         else if(account === 'Godoffoy'){
             charaList = importAll(
                 require.context('../asset/Godoffoy', false, /\.png$/)
             )
-            if(team == 'A') setCharA(charaList)
-            else if(team === 'B') setCharB(charaList)
+            for(let i=0;i<charaList.length;i++){
+                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
+            }
+            for(let i=0;i<filterSoundId.length;i++){
+                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
+            }
+
+            if(team == 'A'){
+                setCharA(charaList)
+                setSoundA(charaSound)
+            } 
+            else if(team === 'B'){
+                setCharB(charaList)
+                setSoundB(charaSound)
+            } 
+        }
+        else if(account === 'Juleha'){
+            charaList = importAll(
+                require.context('../asset/Juleha', false, /\.png$/)
+            )
+            for(let i=0;i<charaList.length;i++){
+                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
+            }
+            for(let i=0;i<filterSoundId.length;i++){
+                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
+            }
+
+            if(team == 'A'){
+                setCharA(charaList)
+                setSoundA(charaSound)
+            } 
+            else if(team === 'B'){
+                setCharB(charaList)
+                setSoundB(charaSound)
+            } 
         }
     }
 
@@ -271,12 +345,12 @@ export const Picked = () => {
                 <div className='dropDown'>
                     <select onChange={e=>handleCharaList(e, e.target.value, 'A')}>
                         {options.map((option) => (
-                            <option value={option.value} >{option.label}</option>
+                            <option value={option.value} key={option.label}>{option.label}</option>
                         ))}
                     </select>
                     <select onChange={e=>handleCharaList(e, e.target.value, 'B')}>
                         {options.map((option) => (
-                            <option value={option.value} >{option.label}</option>
+                            <option value={option.value} key={option.value}>{option.label}</option>
                         ))}
                     </select>
                 </div>
@@ -295,21 +369,15 @@ export const Picked = () => {
                 </div>
                 <div className='chooseChar'>
                     {
-                        // allData.map((image, index) => (
-                        //     <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
-                        // ))
                         charA.map((image, index) => (
-                            <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
-                        // allData.map((image, index) => (
-                        //     <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
-                        // ))
                         charB.map((image, index) => (
-                            <img src={image} key={characterId[index]} alt="character" onClick={e => (handleSound(e, index), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
                 </div>
