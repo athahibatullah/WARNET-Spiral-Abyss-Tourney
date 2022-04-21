@@ -38,14 +38,7 @@ export const Picked = () => {
     const [pickChar6, setpickChar6] = useState()
     const [pickChar7, setpickChar7] = useState()
     const [pickChar8, setpickChar8] = useState()
-
-    const renderer = props => {
-        return (
-            <div>
-                {props.formatted.minutes}:{props.formatted.seconds}
-            </div>
-        );
-      };
+        
     const importAll = (r) => {
         return r.keys().map(r);
     };
@@ -111,6 +104,7 @@ export const Picked = () => {
         }
     }
     const options = [
+        { value: 'Select', label:'Select'},
         { value: 'Kibadda', label: 'Kibadda' },
         { value: 'iScav', label: 'iScav' },
         { value: 'Godoffoy', label: 'Godoffoy' },
@@ -217,83 +211,45 @@ export const Picked = () => {
             } 
         }
     }
+    const [timer, setTimer] = useState(300); // 25 minutes
+    const [start, setStart] = useState(false);
+    const firstStart = useRef(true);
+    const tick = useRef();
 
-    // We need ref in this, because we are dealing
-    // with JS setInterval to keep track of it and
-    // stop it when needed
-    const Ref = useRef(null);
-  
-    // The state for our timer
-    const [timer, setTimer] = useState('00:00');
-  
-  
-    const getTimeRemaining = (e) => {
-        const total = Date.parse(e) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        return {
-            total, minutes, seconds
-        };
-    }
-  
-  
-    const startTimer = (e) => {
-        let { total, minutes, seconds } 
-                    = getTimeRemaining(e);
-        if (total >= 0) {
-  
-            // update the timer
-            // check if less than 10 then we need to 
-            // add '0' at the begining of the variable
-            setTimer(
-                (minutes > 9 ? minutes : '0' + minutes) + ':'
-                + (seconds > 9 ? seconds : '0' + seconds)
-            )
-        }
-    }
-  
-  
-    const clearTimer = (e) => {
-  
-        // If you adjust it you should also need to
-        // adjust the Endtime formula we are about
-        // to code next    
-        setTimer('05:00');
-  
-        // If you try to remove this line the 
-        // updating of timer Variable will be
-        // after 1000ms or 1sec
-        if (Ref.current) clearInterval(Ref.current);
-        const id = setInterval(() => {
-            startTimer(e);
-        }, 1000)
-        Ref.current = id;
-    }
-  
-    const getDeadTime = () => {
-        let deadline = new Date();
-  
-        // This is where you need to adjust if 
-        // you entend to add more time
-        deadline.setSeconds(deadline.getSeconds() + 300);
-        return deadline;
-    }
-  
-    // We can use useEffect so that when the component
-    // mount the timer will start as soon as possible
-  
-    // We put empty array to act as componentDid
-    // mount only
     useEffect(() => {
-        clearTimer(getDeadTime());
-    }, []);
-  
-    // Another way to call the clearTimer() to start
-    // the countdown is via action event from the
-    // button first we create function to be called
-    // by the button
-    const onClickReset = () => {
-        clearTimer(getDeadTime());
+        if (firstStart.current) {
+            firstStart.current = !firstStart.current;
+            return;
+        }
+
+        if (start) {
+            tick.current = setInterval(() => {
+                setTimer((timer) => timer - 1);
+            }, 1000);
+        } 
+        else {
+            clearInterval(tick.current);
+        }
+
+        return () => clearInterval(tick.current);
+    }, [start]);
+
+    const toggleStart = () => {
+        setStart(!start);
+    };
+
+    const dispSecondsAsMins = (seconds) => {
+        if(seconds >= 0){
+            const mins = Math.floor(seconds / 60);
+            const seconds_ = seconds % 60;
+            return (mins > 9 ? mins: "0" + mins.toString()) + ":" + (seconds_ > 9 ? seconds_ : "0"  + seconds_.toString());
+        }
+        else if(seconds < 0){
+            tick.current = setTimer(0)
+        }
+    };
+    const resetTimer = () => {
+        setTimer(300)
     }
     return (
         <>
@@ -318,11 +274,11 @@ export const Picked = () => {
                     </div>
                 </div>
                 <div className='timer'>
-                    <div>
-                     <div>{timer}</div>
-            {/* <button onClick={onClickReset}>Reset</button> */}
-                    <span className='timerinvs'>00:00</span>
-                    </div>
+                     <div>{dispSecondsAsMins(timer)}</div>
+                    <button onClick={toggleStart}>
+                        {!start ? "START" : "STOP"}
+                    </button>
+                    <button onClick={resetTimer}>RESET</button>
                 </div>
                 <div className='playerB'>
                     <div className='teamOne'>

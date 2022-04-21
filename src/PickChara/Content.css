@@ -7,10 +7,6 @@
     gap: 5vw;
     /* border: 1px solid red; */
 }
-.timer{
-    flex-wrap: wrap;
-    font-size: 2vw;
-}
 .containerPicked img{
     width: 5vw;
     height: 5vw;
@@ -78,10 +74,21 @@ h1{
     display: flex;
     justify-content: center;
 }
+.timer{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+    width: 7vw;
+}
 .timerinvs{
     height: 50px;
     width: 50px;
     color: white;
+    display: flex;
+    justify-content: center;
 }
 .teamsPicked{
     transform: rotate(-90deg);
