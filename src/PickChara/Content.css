@@ -83,13 +83,6 @@ h1{
     gap: 1vw;
     width: 7vw;
 }
-.timerinvs{
-    height: 50px;
-    width: 50px;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
 .teamsPicked{
     transform: rotate(-90deg);
     height: 50px;

@@ -1,0 +1,145 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+    position:fixed;
+    background: white;
+    width: 80vw;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.containerModal{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.containerModal h1{
+    font-size : 1.5em;
+    text-align: center;
+}
+.containerModal p{
+    font-size: 1em;
+}
+.containerModal button{
+    border-radius: 5px;
+    /* color: #FFCB05; */
+    outline: none;
+    /* background-color: #2A75BB; */
+    box-sizing: border-box;
+    width: 6em;
+    height: 2em;
+    font-size: 1em;
+    font-weight: 600;
+}
+.modalButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Coin {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  #coin {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+  #coin div {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.3),
+      0 12px 20px -10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.3),
+      0 12px 20px -10px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.3),
+      0 12px 20px -10px rgba(0, 0, 0, 0.4);
+  }
+  .side-a {
+    background-color: #bb0000;
+    color: white;
+    text-align: center;
+  }
+  .side-b {
+    background-color: #3e3e3e;
+    color: white;
+    text-align: center;
+  }
+  
+  #coin {
+    transition: transform 1s ease-in;
+    transform-style: preserve-3d;
+  }
+  #coin div {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  .side-a {
+    z-index: 100;
+  }
+  .side-b {
+    transform: rotateY(-180deg);
+  }
+  
+  #coin.heads {
+    -webkit-animation: flipHeads 2s ease-out forwards;
+    -moz-animation: flipHeads 2s ease-out forwards;
+    -o-animation: flipHeads 2s ease-out forwards;
+    animation: flipHeads 2s ease-out forwards;
+  }
+  #coin.tails {
+    -webkit-animation: flipTails 2s ease-out forwards;
+    -moz-animation: flipTails 2s ease-out forwards;
+    -o-animation: flipTails 2s ease-out forwards;
+    animation: flipTails 2s ease-out forwards;
+  }
+  
+  @keyframes flipHeads {
+    from {
+      -webkit-transform: rotateY(0);
+      -moz-transform: rotateY(0);
+      transform: rotateY(0);
+    }
+    to {
+      -webkit-transform: rotateY(540deg);
+      -moz-transform: rotateY(540deg);
+      transform: rotateY(540deg);
+    }
+  }
+  @keyframes flipTails {
+    from {
+      -webkit-transform: rotateY(0);
+      -moz-transform: rotateY(0);
+      transform: rotateY(0);
+    }
+    to {
+      -webkit-transform: rotateY(720deg);
+      -moz-transform: rotateY(720deg);
+      transform: rotateY(720deg);
+    }
+  }
+  

@@ -1,5 +1,6 @@
-import React , {useState, useRef, useEffect} from 'react'
+import React , {useState, useRef, useEffect, Component} from 'react'
 import './Content.css';
+import { Modal} from './Modal.js';
 export const Header = () => {
     return (
         <h1>WARNET</h1>
@@ -211,7 +212,7 @@ export const Picked = () => {
             } 
         }
     }
-    const [timer, setTimer] = useState(300); // 25 minutes
+    const [timer, setTimer] = useState(300); // set timer
     const [start, setStart] = useState(false);
     const firstStart = useRef(true);
     const tick = useRef();
@@ -304,6 +305,7 @@ export const Picked = () => {
                             <option value={option.value} key={option.label}>{option.label}</option>
                         ))}
                     </select>
+                    <Flip></Flip>
                     <select onChange={e=>handleCharaList(e, e.target.value, 'B')}>
                         {options.map((option) => (
                             <option value={option.value} key={option.value}>{option.label}</option>
@@ -349,4 +351,31 @@ export const Picked = () => {
             </div>
         </>
     )
+}
+
+class Flip extends Component{
+    constructor(){
+        super();
+        this.state = {
+            show: false
+        };
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+    }
+    showModal = () => {
+        this.setState({ show: true });
+      };
+    
+    hideModal = () => {
+        this.setState({ show: false });
+    };
+    render() {
+        return (
+          <main>
+            <Modal show={this.state.show} handleClose={this.hideModal}>
+            </Modal>
+            <button type="button" onClick={this.showModal}>FLIP COIN</button>
+          </main>
+        );
+    }
 }
