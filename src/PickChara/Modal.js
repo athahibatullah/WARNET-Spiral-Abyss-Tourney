@@ -3,9 +3,6 @@ import './Modal.css';
 
 export const Modal = ({ handleClose, show, children}) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
-    function handle(){
-
-    }
     return(
         <>
             <div className={showHideClassName}>
@@ -14,7 +11,7 @@ export const Modal = ({ handleClose, show, children}) => {
                 <div className="containerModal">
                 <Coin></Coin>
                 <button type="button" onClick={handleClose}>
-                    Cancel
+                    Done
                 </button><br></br>
                 </div>
             </section>
@@ -48,6 +45,7 @@ class Coin extends React.Component {
           <div id="coin" className={this.state.result} key={+new Date()}>
             <div class="side-a">
               <h2>TAIL</h2>
+              {/* <img src='/static/media/albedo.5bc6986b2ac6597f0948.png'></img> */}
             </div>
             <div className="side-b">
               <h2>HEAD</h2>
@@ -56,7 +54,7 @@ class Coin extends React.Component {
           <div className='modalButton'>
             <h1>Flip a coin</h1>
             <button id="btn" onClick={this.coinToss}>
-                Coin Toss
+                Flip
             </button>
           </div>
           <br></br>

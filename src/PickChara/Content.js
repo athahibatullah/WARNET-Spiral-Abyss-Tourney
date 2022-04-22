@@ -1,4 +1,5 @@
 import React , {useState, useRef, useEffect, Component} from 'react'
+import {Transition} from "react-transition-group";
 import './Content.css';
 import { Modal} from './Modal.js';
 export const Header = () => {
@@ -39,6 +40,44 @@ export const Picked = () => {
     const [pickChar6, setpickChar6] = useState()
     const [pickChar7, setpickChar7] = useState()
     const [pickChar8, setpickChar8] = useState()
+
+    const [inProp1, setInProp1] = useState(false);
+    const [inProp2, setInProp2] = useState(false);
+    const [inProp3, setInProp3] = useState(false);
+    const [inProp4, setInProp4] = useState(false);
+    const [inProp5, setInProp5] = useState(false);
+    const [inProp6, setInProp6] = useState(false);
+    const [inProp7, setInProp7] = useState(false);
+    const [inProp8, setInProp8] = useState(false);
+    const [inProp9, setInProp9] = useState(false);
+    const [inProp10, setInProp10] = useState(false);
+    const [inProp11, setInProp11] = useState(false);
+    const [inProp12, setInProp12] = useState(false);
+    const [inProp13, setInProp13] = useState(false);
+    const [inProp14, setInProp14] = useState(false);
+    const [inProp15, setInProp15] = useState(false);
+    const [inProp16, setInProp16] = useState(false);
+    
+    const [inProp17, setInProp17] = useState(false);
+    const [inProp18, setInProp18] = useState(false);
+    const [inProp19, setInProp19] = useState(false);
+    const [inProp20, setInProp20] = useState(false);
+    const [inProp21, setInProp21] = useState(false);
+    const [inProp22, setInProp22] = useState(false);
+    const [inProp23, setInProp23] = useState(false);
+    const [inProp24, setInProp24] = useState(false);
+    const [state, setState] = useState(false);
+
+    const duration = 300;
+    const defaultStyle = {
+        transition: `opacity ${duration}ms ease-in-out`
+    };
+    const transitionStyles = {
+        entering: { opacity: 0 },
+        entered: { opacity: 1 },
+        exiting: { opacity: 1 },
+        exited: { opacity: 1 },
+    };
         
     const importAll = (r) => {
         return r.keys().map(r);
@@ -73,35 +112,107 @@ export const Picked = () => {
     function handleChoose(e, image, current){
         e.preventDefault();
         if(isChoose){
-            if(current == 'Char1') setSelectChar1(image)
-            else if(current == 'Char2') setSelectChar2(image)
-            else if(current == 'Char3') setSelectChar3(image)
-            else if(current == 'Char4') setSelectChar4(image)
-            else if(current == 'Char5') setSelectChar5(image)
-            else if(current == 'Char6') setSelectChar6(image)
-            else if(current == 'Char7') setSelectChar7(image)
-            else if(current == 'Char8') setSelectChar8(image)
-            else if(current == 'Char9') setSelectChar9(image)
-            else if(current == 'Char10') setSelectChar10(image)
-            else if(current == 'Char11') setSelectChar11(image)
-            else if(current == 'Char12') setSelectChar12(image)
-            else if(current == 'Char13') setSelectChar13(image)
-            else if(current == 'Char14') setSelectChar14(image)
-            else if(current == 'Char15') setSelectChar15(image)
-            else if(current == 'Char16') setSelectChar16(image)   
+            if(current == 'Char1') {
+                setSelectChar1(image)
+                setInProp1(!inProp1)
+            }
+            else if(current == 'Char2'){
+                setSelectChar2(image)
+                setInProp2(!inProp2)
+            } 
+            else if(current == 'Char3'){
+                setSelectChar3(image)
+                setInProp3(!inProp3)
+            } 
+            else if(current == 'Char4'){
+                setSelectChar4(image)
+                setInProp4(!inProp4)
+            } 
+            else if(current == 'Char5'){
+                setSelectChar5(image)
+                setInProp5(!inProp5)
+            } 
+            else if(current == 'Char6'){
+                setSelectChar6(image)
+                setInProp6(!inProp6)
+            } 
+            else if(current == 'Char7'){
+                setSelectChar7(image)
+                setInProp7(!inProp7)
+            } 
+            else if(current == 'Char8'){
+                setSelectChar8(image)
+                setInProp8(!inProp8)
+            } 
+            else if(current == 'Char9'){
+                setSelectChar9(image)
+                setInProp9(!inProp9)
+            } 
+            else if(current == 'Char10'){
+                setSelectChar10(image)
+                setInProp10(!inProp10)
+            } 
+            else if(current == 'Char11'){
+                setSelectChar11(image)
+                setInProp11(!inProp11)
+            } 
+            else if(current == 'Char12'){
+                setSelectChar12(image)
+                setInProp12(!inProp12)
+            } 
+            else if(current == 'Char13'){
+                setSelectChar13(image)
+                setInProp13(!inProp13)
+            } 
+            else if(current == 'Char14'){
+                setSelectChar14(image)
+                setInProp14(!inProp14)
+            } 
+            else if(current == 'Char15'){
+                setSelectChar15(image)
+                setInProp15(!inProp15)
+            } 
+            else if(current == 'Char16'){
+                setSelectChar16(image)   
+                setInProp16(!inProp16)
+            } 
         }
     }
     function handlePick(e, image, current){
         e.preventDefault();
         if(isPick){
-            if(current == 'Char1') setpickChar1(image)
-            else if(current == 'Char2') setpickChar2(image)
-            else if(current == 'Char3') setpickChar3(image)
-            else if(current == 'Char4') setpickChar4(image)
-            else if(current == 'Char5') setpickChar5(image)
-            else if(current == 'Char6') setpickChar6(image)
-            else if(current == 'Char7') setpickChar7(image)
-            else if(current == 'Char8') setpickChar8(image)
+            if(current == 'Char1'){
+                setpickChar1(image)
+                setInProp17(!inProp17)
+            } 
+            else if(current == 'Char2'){
+                setpickChar2(image)
+                setInProp18(!inProp18)
+            } 
+            else if(current == 'Char3'){
+                setpickChar3(image)
+                setInProp19(!inProp19)
+            } 
+            else if(current == 'Char4'){
+                setpickChar4(image)
+                setInProp20(!inProp20)
+            } 
+            else if(current == 'Char5'){
+                setpickChar5(image)
+                setInProp21(!inProp21)
+            } 
+            else if(current == 'Char6'){
+                setpickChar6(image)
+                setInProp22(!inProp22)
+            } 
+            else if(current == 'Char7'){
+                setpickChar7(image)
+                setInProp23(!inProp23)
+            }   
+            else if(current == 'Char8'){
+                setpickChar8(image)
+                setInProp24(!inProp24)
+            } 
         }
     }
     const options = [
@@ -115,6 +226,7 @@ export const Picked = () => {
     const [selectedOption2, setSelectedOption2] = useState(options[0]); 
     const [charA, setCharA] = useState(allData)
     const [charB, setCharB] = useState(allData)
+    console.log(allData[0])
     const [soundA, setSoundA] = useState(allSound)
     const [soundB, setSoundB] = useState(allSound)
     const characterIdA =  charA.map(image => (
@@ -216,6 +328,7 @@ export const Picked = () => {
     const [start, setStart] = useState(false);
     const firstStart = useRef(true);
     const tick = useRef();
+    // console.log(allData[0])
 
     useEffect(() => {
         if (firstStart.current) {
@@ -253,7 +366,7 @@ export const Picked = () => {
         setTimer(300)
     }
     return (
-        <>
+        <>  
             <div className='containerPicked'>
                 <div className='teams'>
                     <p>Team 1</p>
@@ -261,17 +374,73 @@ export const Picked = () => {
                 </div>
                 <div className='playerA'>
                     <div className='teamOne'>
-                        <img src={selectChar1} onClick={e => handleCurrent(e, 'Char1', true, false)}/>
-                        <img src={selectChar2} onClick={e => handleCurrent(e, 'Char2', true, false)}/>
-                        <img src={selectChar3} onClick={e => handleCurrent(e, 'Char3', true, false)}/>
-                        <img src={selectChar4} onClick={e => handleCurrent(e, 'Char4', true, false)}/>
+                        <Transition in={inProp1} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar1} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char1', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp2} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar2} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char2', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp3} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar3} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char3', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp4} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar4} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char4', true, false)}/>
+                            )}
+                        </Transition>
                     </div>
                     
                     <div className='teamTwoA'>
-                        <img src={selectChar5} onClick={e => handleCurrent(e, 'Char5', true, false)}/>
-                        <img src={selectChar6} onClick={e => handleCurrent(e, 'Char6', true, false)}/>
-                        <img src={selectChar7} onClick={e => handleCurrent(e, 'Char7', true, false)}/>
-                        <img src={selectChar8} onClick={e => handleCurrent(e, 'Char8', true, false)}/>
+                        <Transition in={inProp5} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar5} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char5', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp6} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar6} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char6', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp7} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar7} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char7', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp8} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar8} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char8', true, false)}/>
+                            )}
+                        </Transition>
                     </div>
                 </div>
                 <div className='timer'>
@@ -283,16 +452,72 @@ export const Picked = () => {
                 </div>
                 <div className='playerB'>
                     <div className='teamOne'>
-                        <img src={selectChar9} onClick={e => handleCurrent(e, 'Char9', true, false)}></img>
-                        <img src={selectChar10} onClick={e => handleCurrent(e, 'Char10', true, false)}></img>
-                        <img src={selectChar11} onClick={e => handleCurrent(e, 'Char11', true, false)}></img>
-                        <img src={selectChar12} onClick={e => handleCurrent(e, 'Char12', true, false)}></img>
+                        <Transition in={inProp9} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar9} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char9', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp10} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar10} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char10', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp11} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar11} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char11', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp12} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar12} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char12', true, false)}/>
+                            )}
+                        </Transition>
                     </div>
                     <div className='teamTwoB'>
-                        <img src={selectChar13} onClick={e => handleCurrent(e, 'Char13', true, false)}></img>
-                        <img src={selectChar14} onClick={e => handleCurrent(e, 'Char14', true, false)}></img>
-                        <img src={selectChar15} onClick={e => handleCurrent(e, 'Char15', true, false)}></img>
-                        <img src={selectChar16} onClick={e => handleCurrent(e, 'Char16', true, false)}></img>
+                        <Transition in={inProp13} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar13} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char13', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp14} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar14} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char14', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp15} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar15} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char15', true, false)}/>
+                            )}
+                        </Transition>
+                        <Transition in={inProp16} timeout={300}>
+                            {(state) => (
+                            <img src={selectChar16} style={{
+                                ...defaultStyle,
+                                ...transitionStyles[state]
+                                }}onClick={e => handleCurrent(e, 'Char16', true, false)}/>
+                            )}
+                        </Transition>
                     </div>
                 </div>
                 <div className='teams'>
@@ -320,10 +545,38 @@ export const Picked = () => {
                     <p>Picked Char</p>
                 </div>
                 <div className='pickedChar'>
-                    <img src={pickChar1} onClick={e => handleCurrent(e, 'Char1', false, true)}></img>
-                    <img src={pickChar2} onClick={e => handleCurrent(e, 'Char2', false, true)}></img>
-                    <img src={pickChar3} onClick={e => handleCurrent(e, 'Char3', false, true)}></img>
-                    <img src={pickChar4} onClick={e => handleCurrent(e, 'Char4', false, true)}></img>
+                    <Transition in={inProp17} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar1} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char1', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp18} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar2} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char2', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp19} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar3} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char3', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp20} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar4} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char4', false, true)}/>
+                        )}
+                    </Transition>
                 </div>
                 <div className='chooseChar'>
                     {
@@ -340,10 +593,38 @@ export const Picked = () => {
                     }
                 </div>
                 <div className='pickedChar'>
-                    <img src={pickChar5} onClick={e => handleCurrent(e, 'Char5', false, true)}></img>
-                    <img src={pickChar6} onClick={e => handleCurrent(e, 'Char6', false, true)}></img>
-                    <img src={pickChar7} onClick={e => handleCurrent(e, 'Char7', false, true)}></img>
-                    <img src={pickChar8} onClick={e => handleCurrent(e, 'Char8', false, true)}></img>
+                    <Transition in={inProp21} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar5} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char5', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp22} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar6} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char6', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp23} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar7} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char7', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp24} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar8} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                            }}onClick={e => handleCurrent(e, 'Char8', false, true)}/>
+                        )}
+                    </Transition>
                 </div>
                 <div className='teamsPicked2'>
                     <p>Picked Char</p>
