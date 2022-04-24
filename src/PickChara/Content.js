@@ -226,7 +226,6 @@ export const Picked = () => {
     const [selectedOption2, setSelectedOption2] = useState(options[0]); 
     const [charA, setCharA] = useState(allData)
     const [charB, setCharB] = useState(allData)
-    console.log(allData[0])
     const [soundA, setSoundA] = useState(allSound)
     const [soundB, setSoundB] = useState(allSound)
     const characterIdA =  charA.map(image => (
@@ -525,17 +524,19 @@ export const Picked = () => {
                     <p>Team 2</p>
                 </div>
                 <div className='dropDown'>
-                    <select onChange={e=>handleCharaList(e, e.target.value, 'A')}>
+                    <input list="charaListA" onChange={e=>handleCharaList(e, e.target.value, 'A')}/>
+                    <datalist id="charaListA">
                         {options.map((option) => (
                             <option value={option.value} key={option.label}>{option.label}</option>
                         ))}
-                    </select>
+                    </datalist>
                     <Flip></Flip>
-                    <select onChange={e=>handleCharaList(e, e.target.value, 'B')}>
+                    <input list="charaListB" onChange={e=>handleCharaList(e, e.target.value, 'B')}/>
+                    <datalist id="charaListB">
                         {options.map((option) => (
-                            <option value={option.value} key={option.value}>{option.label}</option>
+                            <option value={option.value} key={option.label}>{option.label}</option>
                         ))}
-                    </select>
+                    </datalist>
                 </div>
             </div>
             <br></br>
