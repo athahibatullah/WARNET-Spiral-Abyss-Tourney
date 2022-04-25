@@ -1,4 +1,5 @@
 import React , {useState, useRef, useEffect, Component} from 'react'
+import Autocomplete from 'react-autocomplete';
 import {Transition} from "react-transition-group";
 import './Content.css';
 import { Modal} from './Modal.js';
@@ -215,15 +216,14 @@ export const Picked = () => {
             } 
         }
     }
+    const [valueA, setValueA] = useState('');
+    const [valueB, setValueB] = useState('');
     const options = [
-        { value: 'Select', label:'Select'},
         { value: 'Kibadda', label: 'Kibadda' },
         { value: 'iScav', label: 'iScav' },
         { value: 'Godoffoy', label: 'Godoffoy' },
         { value: 'Juleha', label: 'Juleha' }
       ]
-    const [selectedOption1, setSelectedOption1] = useState(options[0]); 
-    const [selectedOption2, setSelectedOption2] = useState(options[0]); 
     const [charA, setCharA] = useState(allData)
     const [charB, setCharB] = useState(allData)
     const [soundA, setSoundA] = useState(allSound)
@@ -235,13 +235,10 @@ export const Picked = () => {
         (image.split('/'))[3].split('.')[0])
     )
 
-    function handleCharaList(e, account, team){
+    function handleCharaList(account, team){
         let charaList = null
         let charaSound = {}
         let filterSoundId = []
-        e.preventDefault()
-        setSelectedOption1(account)
-        setSelectedOption2(account)
         if(account === 'Kibadda'){
             charaList = importAll(
                 require.context('../asset/Kibadda', false, /\.png$/)
@@ -524,19 +521,61 @@ export const Picked = () => {
                     <p>Team 2</p>
                 </div>
                 <div className='dropDown'>
-                    <input list="charaListA" onChange={e=>handleCharaList(e, e.target.value, 'A')}/>
-                    <datalist id="charaListA">
-                        {options.map((option) => (
-                            <option value={option.value} key={option.label}>{option.label}</option>
-                        ))}
-                    </datalist>
+                    <Autocomplete
+                        items={options}
+                        shouldItemRender={(item, valueA
+                            ) => item.label.toLowerCase()
+                            .indexOf(valueA.toLowerCase()) > -1}
+                        getItemValue={item => item.value}
+                        renderItem={(item, isHighlighted) =>
+                            <div style={{
+                                background: isHighlighted ?
+                                    '#bcf5bc' : 'white'
+                            }}
+                                key={item.label}>
+                                {item.label}
+                            </div>
+                        }
+                        value={valueA}
+                        onChange={e=>setValueA(e.target.value)}
+                        onSelect={e=>(handleCharaList(e, 'A'), setValueA(e))}
+                        inputProps={{
+                            style: {
+                                width: '7vw', height: '1vw',
+                                background: '#e4f3f7', 
+                                border: '2px outset lightgray'
+                            },
+                            placeholder: 'Character List'
+                        }}
+                    />
                     <Flip></Flip>
-                    <input list="charaListB" onChange={e=>handleCharaList(e, e.target.value, 'B')}/>
-                    <datalist id="charaListB">
-                        {options.map((option) => (
-                            <option value={option.value} key={option.label}>{option.label}</option>
-                        ))}
-                    </datalist>
+                    <Autocomplete
+                    items={options}
+                    shouldItemRender={(item, valueB
+                        ) => item.label.toLowerCase()
+                        .indexOf(valueB.toLowerCase()) > -1}
+                    getItemValue={item => item.value}
+                    renderItem={(item, isHighlighted) =>
+                        <div style={{
+                            background: isHighlighted ?
+                                '#bcf5bc' : 'white'
+                        }}
+                            key={item.label}>
+                            {item.label}
+                        </div>
+                    }
+                    value={valueB}
+                    onChange={e=>setValueB(e.target.value)}
+                    onSelect={e=>(handleCharaList(e, 'B'), setValueB(e))}
+                    inputProps={{
+                        style: {
+                            width: '7vw', height: '1vw',
+                            background: '#e4f3f7', 
+                            border: '2px outset lightgray'
+                        },
+                        placeholder: 'Character List'
+                    }}
+                />
                 </div>
             </div>
             <br></br>
