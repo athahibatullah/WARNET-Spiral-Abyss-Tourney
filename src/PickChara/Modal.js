@@ -44,11 +44,10 @@ class Coin extends React.Component {
             <br></br>
           <div id="coin" className={this.state.result} key={+new Date()}>
             <div class="side-a">
-              <h2>TAIL</h2>
-              {/* <img src='/static/media/albedo.5bc6986b2ac6597f0948.png'></img> */}
+              <img src={require('../asset/draft/coinB.png')}/>
             </div>
             <div className="side-b">
-              <h2>HEAD</h2>
+              <img src={require('../asset/draft/coinA.png')}/>
             </div>
           </div>
           <div className='modalButton'>

@@ -1,3 +1,10 @@
+body{
+    background-color: #1d658c;
+    color: #fff;
+}
+h1{
+    font-weight: 100;
+}
 .containerPicked{
     display: flex;
     flex-direction: row;
@@ -10,7 +17,7 @@
 .containerPicked img{
     width: 5vw;
     height: 5vw;
-    border: 4px solid black;
+    /* border: 4px solid black; */
     border-radius: 10px;
     margin: 1px;
     flex-direction: row;
@@ -18,15 +25,21 @@
     float: left;
     text-align: center;
 }
+.containerPicked .timer img{
+    border: 0px;
+    width: 2vw;
+    height: 2vw;
+}
 .containerPicked img:hover{
     cursor: pointer;
 }
 .teams p{
     height: 2vw;
-    width: 4vw;
+    width: 5vw;
     flex-direction: column;
     flex-wrap: wrap;
     margin-top: 3vw;
+    font-size: 20px;
 }
 
 .containerChoose{
@@ -39,33 +52,37 @@
 }
 .pickedChar{
     flex-direction: column;
-    width: 5vw;
-    height: auto;  
+    width: 6vw;
+    height: auto; 
+    background-color: #f6f4f0;
+    border: 5px solid #e3d9cf; 
 }
 .pickedChar img{
+    padding-top: 15px;
     width: 5vw;
-    height: 5vw;
-    border: 4px solid black;
+    height: 6vw;
+    padding-left: 7px;
+    /* border: 1px solid black; */
     border-radius: 10px;
 }
 .pickedChar img:hover{
     cursor: pointer;
 }
 .chooseChar{
-    flex-direction: row;
-    justify-content: center;
-    width: 32vw;
+    width: 37vw;
     height: auto;
-    border: 4px solid black;
+    background-color: #f6f4f0;
+    border: 5px solid #e3d9cf;
+    border-radius: 10px;
     padding-top: 3px;
 }
 .chooseChar img{
-    width: 3vw;
-    height: 3vw;
-    border: 3px solid black;
+    width: 52px;
+    height: 69px;
     border-radius: 10px;
     margin: 1px;
-    margin-right: 8px;
+    padding-top: 3px;
+    padding-left: 8px;
 }
 .chooseChar img:hover{
     cursor: pointer;
@@ -99,11 +116,19 @@ h1{
     /* border: 1px solid #000; */
     width: 100%;
     flex-direction: row;
-    justify-content: space-evenly;
-    gap: 5vw;
+    justify-content: space-around;
+    gap: 4vw;
+}
+.autoComplete{
+    display: flex;
+    justify-content: center;
+    width: 10vw;
+    background-color: #f6f4f0;
+    border: 5px solid #e3d9cf;
+    padding-top: 10px;
 }
 
-.fade-enter{
+/* .fade-enter{
     opacity: 0;
  }
  .fade-exit{
@@ -118,4 +143,4 @@ h1{
  .fade-enter-active,
  .fade-exit-active{
     transition: opacity 500ms;
- }
+ } */

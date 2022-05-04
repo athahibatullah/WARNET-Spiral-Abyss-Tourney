@@ -5,7 +5,7 @@ import './Content.css';
 import { Modal} from './Modal.js';
 export const Header = () => {
     return (
-        <h1>WARNET</h1>
+        <h1>Draft Pick</h1>
         
     // <img src={require('../asset/logo_warnet.png')}></img>
     )
@@ -85,7 +85,7 @@ export const Picked = () => {
     };
     
     const allData = importAll(
-        require.context("../asset/Character Card", false, /\.png$/)
+        require.context("../asset/Char Card", false, /\.png$/)
     )
     const allSound = importAll(
         require.context("../asset/Sound", false, /\.ogg$/)
@@ -113,6 +113,7 @@ export const Picked = () => {
     function handleChoose(e, image, current){
         e.preventDefault();
         if(isChoose){
+            toggleStart()
             if(current == 'Char1') {
                 setSelectChar1(image)
                 setInProp1(!inProp1)
@@ -320,46 +321,64 @@ export const Picked = () => {
             } 
         }
     }
-    const [timer, setTimer] = useState(300); // set timer
-    const [start, setStart] = useState(false);
-    const firstStart = useRef(true);
-    const tick = useRef();
-    // console.log(allData[0])
+    const [timer1, setTimer1] = useState(300); // set timer
+    const [timer2, setTimer2] = useState(300); 
+    const [start1, setStart1] = useState(false);
+    const [start2, setStart2] = useState(true);
+    const [firstStart, setFirstStart] = useState(true)
+    const tick1 = useRef();
+    const tick2 = useRef();
 
     useEffect(() => {
-        if (firstStart.current) {
-            firstStart.current = !firstStart.current;
-            return;
+        if(firstStart){
+            setFirstStart(false)
         }
 
-        if (start) {
-            tick.current = setInterval(() => {
-                setTimer((timer) => timer - 1);
+        if (start1) {
+            tick1.current = setInterval(() => {
+                setTimer1((timer1) => timer1 - 1);
             }, 1000);
         } 
+        else if(start2 && !firstStart){
+            tick2.current = setInterval(() => {
+                setTimer2((timer2) => timer2 - 1);
+            }, 1000);
+        }
         else {
-            clearInterval(tick.current);
+            clearInterval(tick1.current);
+            clearInterval(tick2.current);
         }
 
-        return () => clearInterval(tick.current);
-    }, [start]);
+        return () => (clearInterval(tick1.current), clearInterval(tick2.current));
+    }, [start1, start2]);
 
     const toggleStart = () => {
-        setStart(!start);
+        setStart1(!start1);
+        setStart2(start2);
     };
 
-    const dispSecondsAsMins = (seconds) => {
+    const dispSecondsAsMins1 = (seconds) => {
         if(seconds >= 0){
             const mins = Math.floor(seconds / 60);
             const seconds_ = seconds % 60;
             return (mins > 9 ? mins: "0" + mins.toString()) + ":" + (seconds_ > 9 ? seconds_ : "0"  + seconds_.toString());
         }
         else if(seconds < 0){
-            tick.current = setTimer(0)
+            tick1.current = setTimer1(0)
+        }
+    };
+    const dispSecondsAsMins2 = (seconds) => {
+        if(seconds >= 0){
+            const mins = Math.floor(seconds / 60);
+            const seconds_ = seconds % 60;
+            return (mins > 9 ? mins: "0" + mins.toString()) + ":" + (seconds_ > 9 ? seconds_ : "0"  + seconds_.toString());
+        }
+        else if(seconds < 0){
+            tick2.current = setTimer2(0)
         }
     };
     const resetTimer = () => {
-        setTimer(300)
+        setTimer1(300)
     }
     return (
         <>  
@@ -440,11 +459,18 @@ export const Picked = () => {
                     </div>
                 </div>
                 <div className='timer'>
-                     <div>{dispSecondsAsMins(timer)}</div>
+                    <div>{dispSecondsAsMins1(timer1)}</div>
+                    <div>
+                        <img style={start1 && start2? {opacity:1}: {opacity:0.2}}src={require('../asset/draft/panah_kiri_shadow.png')}/>
+                        {/* <img src={require('../asset/draft/logo.png')}/> */}
+                        <img style={start1 && start2? {opacity:0.2}: {opacity:1}} src={require('../asset/draft/panah_kanan_shadow.png')}/>
+                    </div>
+                    <div>{dispSecondsAsMins2(timer2)}</div>
                     <button onClick={toggleStart}>
-                        {!start ? "START" : "STOP"}
+                        {!start1 ? "Player A" : "Player B"}
                     </button>
-                    <button onClick={resetTimer}>RESET</button>
+                    
+                    {/* <button onClick={resetTimer}>RESET</button> */}
                 </div>
                 <div className='playerB'>
                     <div className='teamOne'>
@@ -521,69 +547,80 @@ export const Picked = () => {
                     <p>Team 2</p>
                 </div>
                 <div className='dropDown'>
-                    <Autocomplete
-                        items={options}
-                        shouldItemRender={(item, valueA
-                            ) => item.label.toLowerCase()
-                            .indexOf(valueA.toLowerCase()) > -1}
-                        getItemValue={item => item.value}
-                        renderItem={(item, isHighlighted) =>
-                            <div style={{
-                                background: isHighlighted ?
-                                    '#bcf5bc' : 'white'
+                    <p>Picked</p>
+                    <div className='autoComplete'>
+                        <Autocomplete
+                            items={options}
+                            shouldItemRender={(item, valueA
+                                ) => item.label.toLowerCase()
+                                .indexOf(valueA.toLowerCase()) > -1}
+                            getItemValue={item => item.value}
+                            renderItem={(item, isHighlighted) =>
+                                <div style={{
+                                    background: isHighlighted ?
+                                        '#bcf5bc' : '#f6f4f0',
+                                    color: 'black'
+                                }}
+                                    key={item.label}>
+                                    {item.label}
+                                </div>
+                            }
+                            value={valueA}
+                            onChange={e=>setValueA(e.target.value)}
+                            onSelect={e=>(handleCharaList(e, 'A'), setValueA(e))}
+                            inputProps={{
+                                style: {
+                                    width: '7vw', height: '1vw',
+                                    background: '#e4f3f7', 
+                                    border: '2px outset lightgray'
+                                },
+                                placeholder: 'Character List'
                             }}
-                                key={item.label}>
-                                {item.label}
-                            </div>
-                        }
-                        value={valueA}
-                        onChange={e=>setValueA(e.target.value)}
-                        onSelect={e=>(handleCharaList(e, 'A'), setValueA(e))}
-                        inputProps={{
-                            style: {
-                                width: '7vw', height: '1vw',
-                                background: '#e4f3f7', 
-                                border: '2px outset lightgray'
-                            },
-                            placeholder: 'Character List'
-                        }}
-                    />
-                    <Flip></Flip>
-                    <Autocomplete
-                    items={options}
-                    shouldItemRender={(item, valueB
-                        ) => item.label.toLowerCase()
-                        .indexOf(valueB.toLowerCase()) > -1}
-                    getItemValue={item => item.value}
-                    renderItem={(item, isHighlighted) =>
-                        <div style={{
-                            background: isHighlighted ?
-                                '#bcf5bc' : 'white'
-                        }}
-                            key={item.label}>
-                            {item.label}
-                        </div>
-                    }
-                    value={valueB}
-                    onChange={e=>setValueB(e.target.value)}
-                    onSelect={e=>(handleCharaList(e, 'B'), setValueB(e))}
-                    inputProps={{
-                        style: {
-                            width: '7vw', height: '1vw',
-                            background: '#e4f3f7', 
-                            border: '2px outset lightgray'
-                        },
-                        placeholder: 'Character List'
-                    }}
-                />
+                        />
+                    
+                    </div>
+                    <div className='autoComplete'>
+                        <Flip></Flip>
+                    </div>
+                    <div className='autoComplete'>
+                        <Autocomplete
+                            items={options}
+                            shouldItemRender={(item, valueB
+                                ) => item.label.toLowerCase()
+                                .indexOf(valueB.toLowerCase()) > -1}
+                            getItemValue={item => item.value}
+                            renderItem={(item, isHighlighted) =>
+                                <div style={{
+                                    background: isHighlighted ?
+                                        '#bcf5bc' : '#f6f4f0',
+                                        color: 'black'
+                                }}
+                                    key={item.label}>
+                                    {item.label}
+                                </div>
+                            }
+                            value={valueB}
+                            onChange={e=>setValueB(e.target.value)}
+                            onSelect={e=>(handleCharaList(e, 'B'), setValueB(e))}
+                            inputProps={{
+                                style: {
+                                    width: '7vw', height: '1vw',
+                                    background: '#e4f3f7', 
+                                    border: '2px outset lightgray'
+                                },
+                                placeholder: 'Character List'
+                            }}
+                        />
+                    </div>
+                <p>Picked</p>
                 </div>
             </div>
             <br></br>
 
             <div className='containerChoose'>
-                <div className='teamsPicked'>
+                {/* <div className='teamsPicked'>
                     <p>Picked Char</p>
-                </div>
+                </div> */}
                 <div className='pickedChar'>
                     <Transition in={inProp17} timeout={300}>
                         {(state) => (
@@ -666,9 +703,9 @@ export const Picked = () => {
                         )}
                     </Transition>
                 </div>
-                <div className='teamsPicked2'>
+                {/* <div className='teamsPicked2'>
                     <p>Picked Char</p>
-                </div>
+                </div> */}
             </div>
         </>
     )
@@ -696,6 +733,7 @@ class Flip extends Component{
             <Modal show={this.state.show} handleClose={this.hideModal}>
             </Modal>
             <button type="button" onClick={this.showModal}>FLIP COIN</button>
+            {/* <img onClick={this.showModal} src={require('../asset/draft/logo.png')}/> */}
           </main>
         );
     }
