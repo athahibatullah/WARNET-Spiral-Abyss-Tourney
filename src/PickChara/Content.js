@@ -16,22 +16,22 @@ export const Picked = () => {
     const [isPick, setIsPick] = useState()
     const [currentChar, setCurrentChar] = useState()
 
-    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/Card.png'))
-    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/Card.png'))
-    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/Card.png'))
-    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/Card.png'))
-    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/Card.png'))
-    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/Card.png'))
-    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/Card.png'))
-    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/Card.png'))
-    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/Card.png'))
-    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/Card.png'))
-    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/Card.png'))
-    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/Card.png'))
-    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/Card.png'))
-    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/Card.png'))
-    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/Card.png'))
-    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/Card.png'))
+    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/placeholder_pick.png'))
 
     const [pickChar1, setpickChar1] = useState()
     const [pickChar2, setpickChar2] = useState()
@@ -87,6 +87,16 @@ export const Picked = () => {
     const allData = importAll(
         require.context("../asset/Char Card", false, /\.png$/)
     )
+    const allPortrait = importAll(
+        require.context("../asset/Char Potrait Pick", false, /\.png$/)
+    )
+    const portraitId = allPortrait.map(portrait =>(
+        (portrait.split('/'))[3].split('.')[0].toLowerCase()
+    ))
+    let portraitData = {}
+    for(let i=0;i<allPortrait.length;i++){
+        portraitData[portraitId[i]] = allPortrait[i]
+    }
     const allSound = importAll(
         require.context("../asset/Sound", false, /\.ogg$/)
     )
@@ -110,8 +120,9 @@ export const Picked = () => {
         setIsChoose(choose)
         setIsPick(pick)
     }
-    function handleChoose(e, image, current){
+    function handleChoose(e, index, current){
         e.preventDefault();
+        let image = portraitData[index]
         if(isChoose){
             toggleStart()
             if(current == 'Char1') {
@@ -232,6 +243,8 @@ export const Picked = () => {
     const characterIdA =  charA.map(image => (
         (image.split('/'))[3].split('.')[0])
     )
+    console.log(characterIdA)
+    
     const characterIdB =  charB.map(image => (
         (image.split('/'))[3].split('.')[0])
     )
@@ -659,14 +672,14 @@ export const Picked = () => {
                 <div className='chooseChar'>
                     {
                         charA.map((image, index) => (
-                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
                         charB.map((image, index) => (
-                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, image, currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar))}></img>
                         ))
                     }
                 </div>
