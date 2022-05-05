@@ -16,22 +16,22 @@ export const Picked = () => {
     const [isPick, setIsPick] = useState()
     const [currentChar, setCurrentChar] = useState()
 
-    const [selectChar1, setSelectChar1] = useState()
-    const [selectChar2, setSelectChar2] = useState()
-    const [selectChar3, setSelectChar3] = useState()
-    const [selectChar4, setSelectChar4] = useState()
-    const [selectChar5, setSelectChar5] = useState()
-    const [selectChar6, setSelectChar6] = useState()
-    const [selectChar7, setSelectChar7] = useState()
-    const [selectChar8, setSelectChar8] = useState()
-    const [selectChar9, setSelectChar9] = useState()
-    const [selectChar10, setSelectChar10] = useState()
-    const [selectChar11, setSelectChar11] = useState()
-    const [selectChar12, setSelectChar12] = useState()
-    const [selectChar13, setSelectChar13] = useState()
-    const [selectChar14, setSelectChar14] = useState()
-    const [selectChar15, setSelectChar15] = useState()
-    const [selectChar16, setSelectChar16] = useState()
+    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/Card.png'))
+    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/Card.png'))
+    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/Card.png'))
+    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/Card.png'))
+    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/Card.png'))
+    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/Card.png'))
+    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/Card.png'))
+    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/Card.png'))
+    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/Card.png'))
+    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/Card.png'))
+    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/Card.png'))
+    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/Card.png'))
+    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/Card.png'))
+    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/Card.png'))
+    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/Card.png'))
+    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/Card.png'))
 
     const [pickChar1, setpickChar1] = useState()
     const [pickChar2, setpickChar2] = useState()
@@ -387,7 +387,7 @@ export const Picked = () => {
                     <p>Team 1</p>
                     <p>Team 2</p>
                 </div>
-                <div className='playerA'>
+                <div className='playerA halfRight halfLeft'>
                     <div className='teamOne'>
                         <Transition in={inProp1} timeout={300}>
                             {(state) => (
@@ -461,9 +461,10 @@ export const Picked = () => {
                 <div className='timer'>
                     <div>{dispSecondsAsMins1(timer1)}</div>
                     <div>
-                        <img style={start1 && start2? {opacity:1}: {opacity:0.2}}src={require('../asset/draft/panah_kiri_shadow.png')}/>
-                        {/* <img src={require('../asset/draft/logo.png')}/> */}
-                        <img style={start1 && start2? {opacity:0.2}: {opacity:1}} src={require('../asset/draft/panah_kanan_shadow.png')}/>
+                        <img id='arrowLeft' style={start1 && start2? {opacity:1}: {opacity:0.2}}src={require('../asset/draft/panah_kiri_shadow.png')}/>
+                        <img id='logoMid' src={require('../asset/draft/logo.png')}/>
+                        {/* <Flip></Flip> */}
+                        <img id='arrowRight' style={start1 && start2? {opacity:0.2}: {opacity:1}} src={require('../asset/draft/panah_kanan_shadow.png')}/>
                     </div>
                     <div>{dispSecondsAsMins2(timer2)}</div>
                     <button onClick={toggleStart}>
@@ -472,7 +473,7 @@ export const Picked = () => {
                     
                     {/* <button onClick={resetTimer}>RESET</button> */}
                 </div>
-                <div className='playerB'>
+                <div className='playerB halfRight halfLeft'>
                     <div className='teamOne'>
                         <Transition in={inProp9} timeout={300}>
                             {(state) => (
@@ -733,7 +734,11 @@ class Flip extends Component{
             <Modal show={this.state.show} handleClose={this.hideModal}>
             </Modal>
             <button type="button" onClick={this.showModal}>FLIP COIN</button>
-            {/* <img onClick={this.showModal} src={require('../asset/draft/logo.png')}/> */}
+            {/* <div className='timer'>
+                <img id='arrowLeft' src={require('../asset/draft/panah_kiri_shadow.png')}/>
+                <img id='logoMid' onClick={this.showModal} src={require('../asset/draft/logo.png')}/>
+                <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')}/>
+            </div> */}
           </main>
         );
     }
