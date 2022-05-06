@@ -40,14 +40,15 @@
 }
 .containerModal button{
     border-radius: 5px;
-    /* color: #FFCB05; */
     outline: none;
-    /* background-color: #2A75BB; */
     box-sizing: border-box;
-    width: 6em;
+    width: 4em;
     height: 2em;
     font-size: 1em;
     font-weight: 600;
+}
+.containerModal button:hover{
+  cursor: pointer;
 }
 .modalButton{
     display: flex;
@@ -63,8 +64,8 @@
   #coin {
     position: relative;
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   #coin img{
     width: 100%;
@@ -84,12 +85,10 @@
       0 12px 20px -10px rgba(0, 0, 0, 0.4);
   }
   .side-a {
-    /* background-color: #bb0000; */
     color: white;
     text-align: center;
   }
   .side-b {
-    /* background-color: #3e3e3e; */
     color: white;
     text-align: center;
   }

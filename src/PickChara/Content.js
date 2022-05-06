@@ -6,8 +6,6 @@ import { Modal} from './Modal.js';
 export const Header = () => {
     return (
         <h1>Draft Pick</h1>
-        
-    // <img src={require('../asset/logo_warnet.png')}></img>
     )
   }
   
@@ -33,14 +31,14 @@ export const Picked = () => {
     const [selectChar15, setSelectChar15] = useState(require('../asset/draft/placeholder_pick.png'))
     const [selectChar16, setSelectChar16] = useState(require('../asset/draft/placeholder_pick.png'))
 
-    const [pickChar1, setpickChar1] = useState()
-    const [pickChar2, setpickChar2] = useState()
-    const [pickChar3, setpickChar3] = useState()
-    const [pickChar4, setpickChar4] = useState()
-    const [pickChar5, setpickChar5] = useState()
-    const [pickChar6, setpickChar6] = useState()
-    const [pickChar7, setpickChar7] = useState()
-    const [pickChar8, setpickChar8] = useState()
+    const [pickChar1, setpickChar1] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar2, setpickChar2] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar3, setpickChar3] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar4, setpickChar4] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar5, setpickChar5] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar6, setpickChar6] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar7, setpickChar7] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar8, setpickChar8] = useState(require('../asset/draft/placeholder_picked.png'))
 
     const [inProp1, setInProp1] = useState(false);
     const [inProp2, setInProp2] = useState(false);
@@ -124,7 +122,6 @@ export const Picked = () => {
         e.preventDefault();
         let image = portraitData[index]
         if(isChoose){
-            toggleStart()
             if(current == 'Char1') {
                 setSelectChar1(image)
                 setInProp1(!inProp1)
@@ -243,7 +240,6 @@ export const Picked = () => {
     const characterIdA =  charA.map(image => (
         (image.split('/'))[3].split('.')[0])
     )
-    console.log(characterIdA)
     
     const characterIdB =  charB.map(image => (
         (image.split('/'))[3].split('.')[0])
@@ -336,8 +332,8 @@ export const Picked = () => {
     }
     const [timer1, setTimer1] = useState(300); // set timer
     const [timer2, setTimer2] = useState(300); 
-    const [start1, setStart1] = useState(false);
-    const [start2, setStart2] = useState(true);
+    const [start1, setStart1] = useState();
+    const [start2, setStart2] = useState();
     const [firstStart, setFirstStart] = useState(true)
     const tick1 = useRef();
     const tick2 = useRef();
@@ -347,7 +343,7 @@ export const Picked = () => {
             setFirstStart(false)
         }
 
-        if (start1) {
+        if (start1 && !firstStart) {
             tick1.current = setInterval(() => {
                 setTimer1((timer1) => timer1 - 1);
             }, 1000);
@@ -365,9 +361,21 @@ export const Picked = () => {
         return () => (clearInterval(tick1.current), clearInterval(tick2.current));
     }, [start1, start2]);
 
-    const toggleStart = () => {
-        setStart1(!start1);
-        setStart2(start2);
+    const toggleStart = (e, startTeamA, startTeamB, valOpacity1, valOpacity2) => {
+        e.preventDefault();
+        setStart1(startTeamA);
+        setStart2(startTeamB);
+
+        setArrowOpacity1(valOpacity1);
+        setArrowOpacity2(valOpacity2);
+        if(start1){
+            setStart1(false);
+            setStart2(true);
+        }
+        else if(start2){
+            setStart1(true);
+            setStart2(false);
+        }
     };
 
     const dispSecondsAsMins1 = (seconds) => {
@@ -393,6 +401,8 @@ export const Picked = () => {
     const resetTimer = () => {
         setTimer1(300)
     }
+    const [arrowOpacity1, setArrowOpacity1] = useState(1)
+    const [arrowOpacity2, setArrowOpacity2] = useState(1)
     return (
         <>  
             <div className='containerPicked'>
@@ -473,17 +483,12 @@ export const Picked = () => {
                 </div>
                 <div className='timer'>
                     <div>{dispSecondsAsMins1(timer1)}</div>
-                    <div>
-                        <img id='arrowLeft' style={start1 && start2? {opacity:1}: {opacity:0.2}}src={require('../asset/draft/panah_kiri_shadow.png')}/>
-                        <img id='logoMid' src={require('../asset/draft/logo.png')}/>
-                        {/* <Flip></Flip> */}
-                        <img id='arrowRight' style={start1 && start2? {opacity:0.2}: {opacity:1}} src={require('../asset/draft/panah_kanan_shadow.png')}/>
+                    <div className='flipTimer'>
+                        <img id='arrowLeft' src={require('../asset/draft/panah_kiri_shadow.png')} style={{opacity: arrowOpacity1}}/>
+                        <Flip></Flip>
+                        <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')} style={{opacity: arrowOpacity2}}/>
                     </div>
                     <div>{dispSecondsAsMins2(timer2)}</div>
-                    <button onClick={toggleStart}>
-                        {!start1 ? "Player A" : "Player B"}
-                    </button>
-                    
                     {/* <button onClick={resetTimer}>RESET</button> */}
                 </div>
                 <div className='playerB halfRight halfLeft'>
@@ -594,7 +599,12 @@ export const Picked = () => {
                     
                     </div>
                     <div className='autoComplete'>
-                        <Flip></Flip>
+                        <button className='buttonStart' onClick={e=> toggleStart(e, true,false, 1, 0.2)}>
+                            A
+                        </button>
+                        <button className='buttonStart' onClick={e=> toggleStart(e, false,true, 0.2, 1)}>
+                            B
+                        </button>
                     </div>
                     <div className='autoComplete'>
                         <Autocomplete
@@ -632,9 +642,6 @@ export const Picked = () => {
             <br></br>
 
             <div className='containerChoose'>
-                {/* <div className='teamsPicked'>
-                    <p>Picked Char</p>
-                </div> */}
                 <div className='pickedChar'>
                     <Transition in={inProp17} timeout={300}>
                         {(state) => (
@@ -672,14 +679,14 @@ export const Picked = () => {
                 <div className='chooseChar'>
                     {
                         charA.map((image, index) => (
-                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, true,false, 0.2, 1))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
                         charB.map((image, index) => (
-                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar))}></img>
+                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, false,true, 1, 0.2))}></img>
                         ))
                     }
                 </div>
@@ -717,9 +724,6 @@ export const Picked = () => {
                         )}
                     </Transition>
                 </div>
-                {/* <div className='teamsPicked2'>
-                    <p>Picked Char</p>
-                </div> */}
             </div>
         </>
     )
@@ -746,12 +750,7 @@ class Flip extends Component{
           <main>
             <Modal show={this.state.show} handleClose={this.hideModal}>
             </Modal>
-            <button type="button" onClick={this.showModal}>FLIP COIN</button>
-            {/* <div className='timer'>
-                <img id='arrowLeft' src={require('../asset/draft/panah_kiri_shadow.png')}/>
                 <img id='logoMid' onClick={this.showModal} src={require('../asset/draft/logo.png')}/>
-                <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')}/>
-            </div> */}
           </main>
         );
     }

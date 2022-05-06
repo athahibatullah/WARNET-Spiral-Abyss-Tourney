@@ -11,13 +11,11 @@ h1{
     justify-content: center;
     flex-wrap: wrap;
     box-sizing: border-box;
-    gap: 2vw;
-    
-    /* border: 1px solid red; */
+    gap: 1vw;
 }
 .containerPicked .playerA img{
-    width: 5vw;
-    height: 6vw;
+    width: 6vw;
+    height: 5vw;
     border-bottom: 3px solid #f6f4f0;
     border-radius: 10px;
     margin: 5px;
@@ -25,10 +23,11 @@ h1{
     flex-direction: row;
     justify-content: center;
     float: left;
+    background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%);
 }
 .containerPicked .playerB img{
-    width: 5vw;
-    height: 6vw;
+    width: 6vw;
+    height: 5vw;
     border-bottom: 3px solid #f6f4f0;
     border-radius: 10px;
     margin: 5px;
@@ -36,6 +35,7 @@ h1{
     flex-direction: row;
     justify-content: center;
     float: left;
+    background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%);
 }
 .containerPicked .halfRight img{
     border-right: 3px solid;
@@ -57,7 +57,7 @@ h1{
     width: 5vw;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 5vw;
+    margin-top: 4vw;
     font-size: 20px;
 }
 
@@ -78,10 +78,9 @@ h1{
 }
 .pickedChar img{
     padding-top: 15px;
-    width: 5vw;
-    height: 6vw;
-    padding-left: 7px;
-    /* border: 1px solid black; */
+    width: 74px;
+    height: 98px;
+    padding-left: 9px;
     border-radius: 10px;
 }
 .pickedChar img:hover{
@@ -114,26 +113,23 @@ h1{
     display: flex;
     flex-wrap: wrap;
     font-size: 2vw;
-    flex-direction: column;
-    align-items: center;
-    gap: 1vw;
-    width: 15vw;
-}
-/* .timer .flipTimer{
-    position: relative;
-    display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 1vw;
     width: 15vw;
-    background-color: black;
-} */
+    height: auto;
+}
+.timer .flipTimer{
+    display: flex;
+    gap: 10px;
+}
 .timer #arrowLeft{
     width: 3vw;
-    height: auto;
+    height: 4vw;
 }
 .timer #arrowRight{
     width: 3vw;
-    height: auto;
+    height: 4vw;
 }
 .timer #logoMid{
     width: 4vw;
@@ -143,7 +139,6 @@ h1{
     transform: rotate(-90deg);
     height: 50px;
     margin-top: 10vw;
-    /* margin-right: 10vw; */
 }
 .teamsPicked2{
     transform: rotate(90deg);
@@ -152,7 +147,6 @@ h1{
 }
 .dropDown{
     display: flex;
-    /* border: 1px solid #000; */
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
@@ -165,4 +159,12 @@ h1{
     background-color: #f6f4f0;
     border: 5px solid #e3d9cf;
     padding-top: 10px;
+}
+.autoComplete .buttonStart{
+    margin-bottom: 10px;
+    color: #1d658c;
+    border-color: #1d658c;
+    width: 4vw;
+    border-radius: 6px;
+    font-weight: 600;
 }
