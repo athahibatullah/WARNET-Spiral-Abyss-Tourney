@@ -9,22 +9,22 @@ export const Picked = () => {
     const [isPick, setIsPick] = useState()
     const [currentChar, setCurrentChar] = useState()
 
-    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/placeholder_pick.png'))
-    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/placeholder_pick.png'))
+    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/placeholder_pick2.png'))
 
     const [pickChar1, setpickChar1] = useState(require('../asset/draft/placeholder_picked.png'))
     const [pickChar2, setpickChar2] = useState(require('../asset/draft/placeholder_picked.png'))
@@ -405,6 +405,120 @@ export const Picked = () => {
     }
     const [arrowOpacity1, setArrowOpacity1] = useState(1)
     const [arrowOpacity2, setArrowOpacity2] = useState(1)
+
+    const [bannedChara1, setBannedChara1] = useState("brightness(100%)")
+    const [bannedChara2, setBannedChara2] = useState("brightness(100%)")
+    const [bannedChara3, setBannedChara3] = useState("brightness(100%)")
+    const [bannedChara4, setBannedChara4] = useState("brightness(100%)")
+    const [bannedChara5, setBannedChara5] = useState("brightness(100%)")
+    const [bannedChara6, setBannedChara6] = useState("brightness(100%)")
+    const [bannedChara7, setBannedChara7] = useState("brightness(100%)")
+    const [bannedChara8, setBannedChara8] = useState("brightness(100%)")
+    
+    function banChara(e, current){
+        e.preventDefault(); 
+
+        if(current == 'Char1'){
+            setBannedChara1("brightness(50%)")
+            setInProp17(!inProp17)
+        } 
+        else if(current == 'Char2'){
+            setBannedChara2("brightness(50%)")
+            setInProp18(!inProp18)
+        } 
+        else if(current == 'Char3'){
+            setBannedChara3("brightness(50%)")
+            setInProp19(!inProp19)
+        } 
+        else if(current == 'Char4'){
+            setBannedChara4("brightness(50%)")
+            setInProp20(!inProp20)
+        } 
+        else if(current == 'Char5'){
+            setBannedChara5("brightness(50%)")
+            setInProp21(!inProp21)
+        } 
+        else if(current == 'Char6'){
+            setBannedChara6("brightness(50%)")
+            setInProp22(!inProp22)
+        } 
+        else if(current == 'Char7'){
+            setBannedChara7("brightness(50%)")
+            setInProp23(!inProp23)
+        }   
+        else if(current == 'Char8'){
+            setBannedChara8("brightness(50%)")
+            setInProp24(!inProp24)
+        } 
+    }
+    function resetChar(e, current){
+        e.preventDefault();
+        let resetImage = require('../asset/draft/placeholder_pick2.png');
+        if(current == 'Char1') {
+            setSelectChar1(resetImage)
+            setInProp1(!inProp1)
+        }
+        else if(current == 'Char2'){
+            setSelectChar2(resetImage)
+            setInProp2(!inProp2)
+        } 
+        else if(current == 'Char3'){
+            setSelectChar3(resetImage)
+            setInProp3(!inProp3)
+        } 
+        else if(current == 'Char4'){
+            setSelectChar4(resetImage)
+            setInProp4(!inProp4)
+        } 
+        else if(current == 'Char5'){
+            setSelectChar5(resetImage)
+            setInProp5(!inProp5)
+        } 
+        else if(current == 'Char6'){
+            setSelectChar6(resetImage)
+            setInProp6(!inProp6)
+        } 
+        else if(current == 'Char7'){
+            setSelectChar7(resetImage)
+            setInProp7(!inProp7)
+        } 
+        else if(current == 'Char8'){
+            setSelectChar8(resetImage)
+            setInProp8(!inProp8)
+        } 
+        else if(current == 'Char9'){
+            setSelectChar9(resetImage)
+            setInProp9(!inProp9)
+        } 
+        else if(current == 'Char10'){
+            setSelectChar10(resetImage)
+            setInProp10(!inProp10)
+        } 
+        else if(current == 'Char11'){
+            setSelectChar11(resetImage)
+            setInProp11(!inProp11)
+        } 
+        else if(current == 'Char12'){
+            setSelectChar12(resetImage)
+            setInProp12(!inProp12)
+        } 
+        else if(current == 'Char13'){
+            setSelectChar13(resetImage)
+            setInProp13(!inProp13)
+        } 
+        else if(current == 'Char14'){
+            setSelectChar14(resetImage)
+            setInProp14(!inProp14)
+        } 
+        else if(current == 'Char15'){
+            setSelectChar15(resetImage)
+            setInProp15(!inProp15)
+        } 
+        else if(current == 'Char16'){
+            setSelectChar16(resetImage)   
+            setInProp16(!inProp16)
+        } 
+    }
     return (
         <>  
             <h1 onClick={resetTimer}>Draft Pick</h1>
@@ -492,7 +606,6 @@ export const Picked = () => {
                         <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')} style={{opacity: arrowOpacity2}}/>
                     </div>
                     <div>{dispSecondsAsMins2(timer2)}</div>
-                    {/* <button onClick={resetTimer}>RESET</button> */}
                 </div>
                 <div className='playerB halfRight halfLeft'>
                     <div className='teamOne'>
@@ -650,7 +763,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar1} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara1
                             }}onClick={e => handleCurrent(e, 'Char1', false, true)}/>
                         )}
                     </Transition>
@@ -658,7 +772,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar2} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara2
                             }}onClick={e => handleCurrent(e, 'Char2', false, true)}/>
                         )}
                     </Transition>
@@ -666,7 +781,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar3} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara3
                             }}onClick={e => handleCurrent(e, 'Char3', false, true)}/>
                         )}
                     </Transition>
@@ -674,7 +790,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar4} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara4
                             }}onClick={e => handleCurrent(e, 'Char4', false, true)}/>
                         )}
                     </Transition>
@@ -698,7 +815,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar5} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara5
                             }}onClick={e => handleCurrent(e, 'Char5', false, true)}/>
                         )}
                     </Transition>
@@ -706,7 +824,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar6} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara6
                             }}onClick={e => handleCurrent(e, 'Char6', false, true)}/>
                         )}
                     </Transition>
@@ -714,7 +833,8 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar7} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara7
                             }}onClick={e => handleCurrent(e, 'Char7', false, true)}/>
                         )}
                     </Transition>
@@ -722,11 +842,18 @@ export const Picked = () => {
                         {(state) => (
                         <img src={pickChar8} style={{
                             ...defaultStyle,
-                            ...transitionStyles[state]
+                            ...transitionStyles[state],
+                            filter: bannedChara8
                             }}onClick={e => handleCurrent(e, 'Char8', false, true)}/>
                         )}
                     </Transition>
                 </div>
+            </div>
+
+            <div className='footer'>
+                <button className='banA' onClick={e => banChara(e, currentChar)}>BAN</button>
+                <button className='reset' onClick={e => resetChar(e, currentChar)}>RESET</button>
+                <button className='banB' onClick={e => banChara(e, currentChar)}>BAN</button>
             </div>
         </>
     )

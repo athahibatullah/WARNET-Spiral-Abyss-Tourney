@@ -168,3 +168,32 @@ h1{
     border-radius: 6px;
     font-weight: 600;
 }
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1vw;
+}
+.footer .banA{
+    margin-left: 5vw;
+    color: #1d658c;
+    border-color: #1d658c;
+    border-radius: 6px;
+    font-weight: 600;
+    width: 4vw;
+}
+.footer .banB{
+    margin-right: 5vw;
+    color: #1d658c;
+    border-color: #1d658c;
+    border-radius: 6px;
+    font-weight: 600;
+    width: 4vw;
+}
+.footer .reset{
+    color: #1d658c;
+    border-color: #1d658c;
+    border-radius: 6px;
+    font-weight: 600;
+    width: 4vw;
+}
