@@ -3,11 +3,6 @@ import Autocomplete from 'react-autocomplete';
 import {Transition} from "react-transition-group";
 import './Content.css';
 import { Modal} from './Modal.js';
-export const Header = () => {
-    return (
-        <h1>Draft Pick</h1>
-    )
-  }
   
 export const Picked = () => {
     const [isChoose, setIsChoose] = useState()
@@ -339,10 +334,6 @@ export const Picked = () => {
     const tick2 = useRef();
 
     useEffect(() => {
-        // if(firstStart){
-        //     setFirstStart(false)
-        // }
-
         if (start1 && !firstStart) {
             tick1.current = setInterval(() => {
                 setTimer1((timer1) => timer1 - 1);
@@ -365,7 +356,7 @@ export const Picked = () => {
         e.preventDefault();
         if(first || !firstStart){
             if(firstStart){
-                    setFirstStart(false)
+                setFirstStart(false)
             }
             setStart1(startTeamA);
             setStart2(startTeamB);
@@ -405,11 +396,18 @@ export const Picked = () => {
     };
     const resetTimer = () => {
         setTimer1(300)
+        setTimer2(300)
+        setFirstStart(true)
+        setStart1();
+        setStart2();
+        setArrowOpacity1(1);
+        setArrowOpacity2(1);
     }
     const [arrowOpacity1, setArrowOpacity1] = useState(1)
     const [arrowOpacity2, setArrowOpacity2] = useState(1)
     return (
         <>  
+            <h1 onClick={resetTimer}>Draft Pick</h1>
             <div className='containerPicked'>
                 <div className='teams'>
                     <p>Team 1</p>
