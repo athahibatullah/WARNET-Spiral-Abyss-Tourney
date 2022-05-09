@@ -339,9 +339,9 @@ export const Picked = () => {
     const tick2 = useRef();
 
     useEffect(() => {
-        if(firstStart){
-            setFirstStart(false)
-        }
+        // if(firstStart){
+        //     setFirstStart(false)
+        // }
 
         if (start1 && !firstStart) {
             tick1.current = setInterval(() => {
@@ -361,20 +361,25 @@ export const Picked = () => {
         return () => (clearInterval(tick1.current), clearInterval(tick2.current));
     }, [start1, start2]);
 
-    const toggleStart = (e, startTeamA, startTeamB, valOpacity1, valOpacity2) => {
+    const toggleStart = (e, startTeamA, startTeamB, valOpacity1, valOpacity2, first) => {
         e.preventDefault();
-        setStart1(startTeamA);
-        setStart2(startTeamB);
+        if(first || !firstStart){
+            if(firstStart){
+                    setFirstStart(false)
+            }
+            setStart1(startTeamA);
+            setStart2(startTeamB);
 
-        setArrowOpacity1(valOpacity1);
-        setArrowOpacity2(valOpacity2);
-        if(start1){
-            setStart1(false);
-            setStart2(true);
-        }
-        else if(start2){
-            setStart1(true);
-            setStart2(false);
+            setArrowOpacity1(valOpacity1);
+            setArrowOpacity2(valOpacity2);
+            if(start1){
+                setStart1(false);
+                setStart2(true);
+            }
+            else if(start2){
+                setStart1(true);
+                setStart2(false);
+            }
         }
     };
 
@@ -599,10 +604,10 @@ export const Picked = () => {
                     
                     </div>
                     <div className='autoComplete'>
-                        <button className='buttonStart' onClick={e=> toggleStart(e, true,false, 1, 0.2)}>
+                        <button className='buttonStart' onClick={e=> toggleStart(e, true,false, 1, 0.2, true)}>
                             A
                         </button>
-                        <button className='buttonStart' onClick={e=> toggleStart(e, false,true, 0.2, 1)}>
+                        <button className='buttonStart' onClick={e=> toggleStart(e, false,true, 0.2, 1, true)}>
                             B
                         </button>
                     </div>
@@ -679,14 +684,14 @@ export const Picked = () => {
                 <div className='chooseChar'>
                     {
                         charA.map((image, index) => (
-                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, true,false, 0.2, 1))}></img>
+                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, true,false, 0.2, 1, false))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
                         charB.map((image, index) => (
-                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, false,true, 1, 0.2))}></img>
+                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, false,true, 1, 0.2, false))}></img>
                         ))
                     }
                 </div>
