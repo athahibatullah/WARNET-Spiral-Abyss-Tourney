@@ -403,6 +403,11 @@ export const Picked = () => {
         setArrowOpacity1(1);
         setArrowOpacity2(1);
     }
+    const stopTimer = () => {
+        setFirstStart(true);
+        setStart1();
+        setStart2();
+    }
     const [arrowOpacity1, setArrowOpacity1] = useState(1)
     const [arrowOpacity2, setArrowOpacity2] = useState(1)
 
@@ -599,9 +604,9 @@ export const Picked = () => {
                     </div>
                 </div>
                 <div className='timer'>
-                    <div>{dispSecondsAsMins1(timer1)}</div>
+                    <div onClick={stopTimer} >{dispSecondsAsMins1(timer1)}</div>
                     <div className='flipTimer'>
-                        <img id='arrowLeft' src={require('../asset/draft/panah_kiri_shadow.png')} style={{opacity: arrowOpacity1}}/>
+                        <img id='arrowLeft'src={require('../asset/draft/panah_kiri_shadow.png')} style={{opacity: arrowOpacity1}}/>
                         <Flip></Flip>
                         <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')} style={{opacity: arrowOpacity2}}/>
                     </div>
