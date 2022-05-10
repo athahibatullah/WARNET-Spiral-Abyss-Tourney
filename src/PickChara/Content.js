@@ -411,48 +411,88 @@ export const Picked = () => {
     const [arrowOpacity1, setArrowOpacity1] = useState(1)
     const [arrowOpacity2, setArrowOpacity2] = useState(1)
 
-    const [bannedChara1, setBannedChara1] = useState("brightness(100%)")
-    const [bannedChara2, setBannedChara2] = useState("brightness(100%)")
-    const [bannedChara3, setBannedChara3] = useState("brightness(100%)")
-    const [bannedChara4, setBannedChara4] = useState("brightness(100%)")
-    const [bannedChara5, setBannedChara5] = useState("brightness(100%)")
-    const [bannedChara6, setBannedChara6] = useState("brightness(100%)")
-    const [bannedChara7, setBannedChara7] = useState("brightness(100%)")
-    const [bannedChara8, setBannedChara8] = useState("brightness(100%)")
+    const [bannedChara1, setBannedChara1] = useState()
+    const [bannedChara2, setBannedChara2] = useState()
+    const [bannedChara3, setBannedChara3] = useState()
+    const [bannedChara4, setBannedChara4] = useState()
+    const [bannedChara5, setBannedChara5] = useState()
+    const [bannedChara6, setBannedChara6] = useState()
+    const [bannedChara7, setBannedChara7] = useState()
+    const [bannedChara8, setBannedChara8] = useState()
     
     function banChara(e, current){
         e.preventDefault(); 
 
         if(current == 'Char1'){
-            setBannedChara1("brightness(50%)")
+            if(bannedChara1 == "brightness(50%)"){
+                setBannedChara1()    
+            }
+            else{
+                setBannedChara1("brightness(50%)")
+            }
             setInProp17(!inProp17)
         } 
         else if(current == 'Char2'){
-            setBannedChara2("brightness(50%)")
+            if(bannedChara2 == "brightness(50%)"){
+                setBannedChara2()    
+            }
+            else{
+                setBannedChara2("brightness(50%)")
+            }
             setInProp18(!inProp18)
         } 
         else if(current == 'Char3'){
-            setBannedChara3("brightness(50%)")
+            if(bannedChara3 == "brightness(50%)"){
+                setBannedChara3()    
+            }
+            else{
+                setBannedChara3("brightness(50%)")
+            }
             setInProp19(!inProp19)
         } 
         else if(current == 'Char4'){
-            setBannedChara4("brightness(50%)")
+            if(bannedChara4 == "brightness(50%)"){
+                setBannedChara4()    
+            }
+            else{
+                setBannedChara4("brightness(50%)")
+            }
             setInProp20(!inProp20)
         } 
         else if(current == 'Char5'){
-            setBannedChara5("brightness(50%)")
+            if(bannedChara5 == "brightness(50%)"){
+                setBannedChara5()    
+            }
+            else{
+                setBannedChara5("brightness(50%)")
+            }
             setInProp21(!inProp21)
         } 
         else if(current == 'Char6'){
-            setBannedChara6("brightness(50%)")
+            if(bannedChara6 == "brightness(50%)"){
+                setBannedChara6()    
+            }
+            else{
+                setBannedChara6("brightness(50%)")
+            }
             setInProp22(!inProp22)
         } 
         else if(current == 'Char7'){
-            setBannedChara7("brightness(50%)")
+            if(bannedChara7 == "brightness(50%)"){
+                setBannedChara7()    
+            }
+            else{
+                setBannedChara7("brightness(50%)")
+            }
             setInProp23(!inProp23)
         }   
         else if(current == 'Char8'){
-            setBannedChara8("brightness(50%)")
+            if(bannedChara8 == "brightness(50%)"){
+                setBannedChara8()    
+            }
+            else{
+                setBannedChara8("brightness(50%)")
+            }
             setInProp24(!inProp24)
         } 
     }
