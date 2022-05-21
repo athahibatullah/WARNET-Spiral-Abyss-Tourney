@@ -394,7 +394,8 @@ export const Picked = () => {
             tick2.current = setTimer2(0)
         }
     };
-    const resetTimer = () => {
+    const resetTimer = (e) => {
+        e.preventDefault()
         setTimer1(300)
         setTimer2(300)
         setFirstStart(true)
@@ -564,9 +565,39 @@ export const Picked = () => {
             setInProp16(!inProp16)
         } 
     }
+    function clearChar(e){ 
+        e.preventDefault();
+        let resetImagePicked = require('../asset/draft/placeholder_picked.png');
+        let resetImageChoose = require('../asset/draft/placeholder_pick2.png');
+        setSelectChar1(resetImageChoose)
+        setSelectChar2(resetImageChoose)
+        setSelectChar3(resetImageChoose)
+        setSelectChar4(resetImageChoose)
+        setSelectChar5(resetImageChoose)
+        setSelectChar6(resetImageChoose)
+        setSelectChar7(resetImageChoose)
+        setSelectChar8(resetImageChoose)
+        setSelectChar9(resetImageChoose)
+        setSelectChar10(resetImageChoose)
+        setSelectChar11(resetImageChoose)
+        setSelectChar12(resetImageChoose)
+        setSelectChar13(resetImageChoose)
+        setSelectChar14(resetImageChoose)
+        setSelectChar15(resetImageChoose)
+        setSelectChar16(resetImageChoose)
+
+        setpickChar1(resetImagePicked)
+        setpickChar2(resetImagePicked)
+        setpickChar3(resetImagePicked)
+        setpickChar4(resetImagePicked)
+        setpickChar5(resetImagePicked)
+        setpickChar6(resetImagePicked)
+        setpickChar7(resetImagePicked)
+        setpickChar8(resetImagePicked)
+    }
     return (
         <>  
-            <h1 onClick={resetTimer}>Draft Pick</h1>
+            <h1 onClick={e => resetTimer(e)}>Draft Pick</h1>
             <div className='containerPicked'>
                 <div className='teams'>
                     <p>Team 1</p>
@@ -898,6 +929,7 @@ export const Picked = () => {
             <div className='footer'>
                 <button className='banA' onClick={e => banChara(e, currentChar)}>BAN</button>
                 <button className='reset' onClick={e => resetChar(e, currentChar)}>RESET</button>
+                <button className='clear' onClick={e => (clearChar(e), resetTimer(e))}>CLEAR</button>
                 <button className='banB' onClick={e => banChara(e, currentChar)}>BAN</button>
             </div>
         </>

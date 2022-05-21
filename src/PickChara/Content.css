@@ -197,3 +197,10 @@ h1{
     font-weight: 600;
     width: 4vw;
 }
+.footer .clear{
+    color: #1d658c;
+    border-color: #1d658c;
+    border-radius: 6px;
+    font-weight: 600;
+    width: 4vw;
+}
