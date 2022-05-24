@@ -594,6 +594,15 @@ export const Picked = () => {
         setpickChar6(resetImagePicked)
         setpickChar7(resetImagePicked)
         setpickChar8(resetImagePicked)
+
+        setBannedChara1()
+        setBannedChara2()
+        setBannedChara3()
+        setBannedChara4()
+        setBannedChara5()
+        setBannedChara6()
+        setBannedChara7()
+        setBannedChara8()
     }
     return (
         <>  
