@@ -28,14 +28,21 @@ class Coin extends React.Component {
       };
       this.coinToss = this.coinToss.bind(this);
     }
-    coinToss() {
-      this.setState({ nader: "" }, () => {
-        if (Math.random() < 0.5) {
-          this.setState({ result: "heads" });
-        } else {
-          this.setState({ result: "tails" });
-        }
-      });
+    coinToss(tossNow) {
+      if(tossNow){
+        this.setState({ nader: "" }, () => {
+          if (Math.random() < 0.5) {
+            this.setState({ result: "heads" });
+          } else {
+            this.setState({ result: "tails" });
+          }
+        }); 
+      }
+      else{
+        this.setState({ nader: "nader" }, () => {
+          this.setState({ result: "" });
+        });
+      }
     }
   
     render() {
@@ -52,9 +59,12 @@ class Coin extends React.Component {
           </div>
           <div className='modalButton'>
             <h1>Flip a coin</h1>
-            <button id="btn" onClick={this.coinToss}>
+            <button id="btn" onClick={() => this.coinToss(true)}>
                 Flip
             </button>
+            <button type="button" onClick={() => (this.coinToss(false))}>
+                Reset
+            </button><br></br>
           </div>
           <br></br>
           <br></br>
