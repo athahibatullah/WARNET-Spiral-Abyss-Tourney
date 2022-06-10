@@ -325,8 +325,8 @@ export const Picked = () => {
             } 
         }
     }
-    const [timer1, setTimer1] = useState(300); // set timer
-    const [timer2, setTimer2] = useState(300); 
+    const [timer1, setTimer1] = useState(180); // set timer
+    const [timer2, setTimer2] = useState(180); 
     const [start1, setStart1] = useState();
     const [start2, setStart2] = useState();
     const [firstStart, setFirstStart] = useState(true)
@@ -396,8 +396,8 @@ export const Picked = () => {
     };
     const resetTimer = (e) => {
         e.preventDefault()
-        setTimer1(300)
-        setTimer2(300)
+        setTimer1(180)
+        setTimer2(180)
         setFirstStart(true)
         setStart1();
         setStart2();
