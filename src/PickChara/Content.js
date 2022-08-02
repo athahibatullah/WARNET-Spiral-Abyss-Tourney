@@ -26,6 +26,24 @@ export const Picked = () => {
     const [selectChar15, setSelectChar15] = useState(require('../asset S2/draft/kotak_pick.png'))
     const [selectChar16, setSelectChar16] = useState(require('../asset S2/draft/kotak_pick.png'))
 
+    const [backSize1, setbackSize1] = useState()
+    const [backSize2, setbackSize2] = useState()
+    const [backSize3, setbackSize3] = useState()
+    const [backSize4, setbackSize4] = useState()
+    const [backSize5, setbackSize5] = useState()
+    const [backSize6, setbackSize6] = useState()
+    const [backSize7, setbackSize7] = useState()
+    const [backSize8, setbackSize8] = useState()
+    const [backSize9, setbackSize9] = useState()
+    const [backSize10, setbackSize10] = useState()
+    const [backSize11, setbackSize11] = useState()
+    const [backSize12, setbackSize12] = useState()
+    const [backSize13, setbackSize13] = useState()
+    const [backSize14, setbackSize14] = useState()
+    const [backSize15, setbackSize15] = useState()
+    const [backSize16, setbackSize16] = useState()
+
+
     const [pickChar1, setpickChar1] = useState(require('../asset S2/draft/banned_char default.png'))
     const [pickChar2, setpickChar2] = useState(require('../asset S2/draft/banned_char default.png'))
     const [pickChar3, setpickChar3] = useState(require('../asset S2/draft/banned_char default.png'))
@@ -187,9 +205,57 @@ export const Picked = () => {
             } 
         }
     }
-    // function handlePosition(e, current){
-
-    // }
+    function handleBackSize(e, current){
+        e.preventDefault();
+        if(current == 'Char1') {
+            setbackSize1("100% 100%")
+        }
+        else if(current == 'Char2'){
+            setbackSize2("100% 100%")
+        } 
+        else if(current == 'Char3'){
+            setbackSize3("100% 100%")
+        } 
+        else if(current == 'Char4'){
+            setbackSize4("100% 100%")
+        } 
+        else if(current == 'Char5'){
+            setbackSize5("100% 100%")
+        } 
+        else if(current == 'Char6'){
+            setbackSize6("100% 100%")
+        } 
+        else if(current == 'Char7'){
+            setbackSize7("100% 100%")
+        } 
+        else if(current == 'Char8'){
+            setbackSize8("100% 100%")
+        } 
+        else if(current == 'Char9'){
+            setbackSize9("100% 100%")
+        } 
+        else if(current == 'Char10'){
+            setbackSize10("100% 100%")
+        } 
+        else if(current == 'Char11'){
+            setbackSize11("100% 100%")
+        } 
+        else if(current == 'Char12'){
+            setbackSize12("100% 100%")
+        } 
+        else if(current == 'Char13'){
+            setbackSize13("100% 100%")
+        } 
+        else if(current == 'Char14'){
+            setbackSize14("100% 100%")
+        } 
+        else if(current == 'Char15'){
+            setbackSize15("100% 100%")
+        } 
+        else if(current == 'Char16'){
+            setbackSize16("100% 100%")
+        } 
+    }
     function handlePick(e, image, current){
         e.preventDefault();
         if(isPick){
@@ -789,66 +855,82 @@ export const Picked = () => {
         let resetImage = require('../asset S2/draft/kotak_pick.png');
         if(current == 'Char1') {
             setSelectChar1(resetImage)
+            setbackSize1('6vw 5vw')
             setInProp1(!inProp1)
         }
         else if(current == 'Char2'){
             setSelectChar2(resetImage)
+            setbackSize2('6vw 5vw')
             setInProp2(!inProp2)
         } 
         else if(current == 'Char3'){
             setSelectChar3(resetImage)
+            setbackSize3('6vw 5vw')
             setInProp3(!inProp3)
         } 
         else if(current == 'Char4'){
             setSelectChar4(resetImage)
+            setbackSize4('6vw 5vw')
             setInProp4(!inProp4)
         } 
         else if(current == 'Char5'){
             setSelectChar5(resetImage)
+            setbackSize5('6vw 5vw')
             setInProp5(!inProp5)
         } 
         else if(current == 'Char6'){
             setSelectChar6(resetImage)
+            setbackSize6('6vw 5vw')
             setInProp6(!inProp6)
         } 
         else if(current == 'Char7'){
             setSelectChar7(resetImage)
+            setbackSize7('6vw 5vw')
             setInProp7(!inProp7)
         } 
         else if(current == 'Char8'){
             setSelectChar8(resetImage)
+            setbackSize8('6vw 5vw')
             setInProp8(!inProp8)
         } 
         else if(current == 'Char9'){
             setSelectChar9(resetImage)
+            setbackSize9('6vw 5vw')
             setInProp9(!inProp9)
         } 
         else if(current == 'Char10'){
             setSelectChar10(resetImage)
+            setbackSize10('6vw 5vw')
             setInProp10(!inProp10)
         } 
         else if(current == 'Char11'){
             setSelectChar11(resetImage)
+            setbackSize11('6vw 5vw')
             setInProp11(!inProp11)
         } 
         else if(current == 'Char12'){
             setSelectChar12(resetImage)
+            setbackSize12('6vw 5vw')
             setInProp12(!inProp12)
         } 
         else if(current == 'Char13'){
             setSelectChar13(resetImage)
+            setbackSize13('6vw 5vw')
             setInProp13(!inProp13)
         } 
         else if(current == 'Char14'){
             setSelectChar14(resetImage)
+            setbackSize14('6vw 5vw')
             setInProp14(!inProp14)
         } 
         else if(current == 'Char15'){
             setSelectChar15(resetImage)
+            setbackSize15('6vw 5vw')
             setInProp15(!inProp15)
         } 
         else if(current == 'Char16'){
-            setSelectChar16(resetImage)   
+            setSelectChar16(resetImage)
+            setbackSize16('6vw 5vw')   
             setInProp16(!inProp16)
         } 
     }
@@ -872,6 +954,23 @@ export const Picked = () => {
         setSelectChar14(resetImageChoose)
         setSelectChar15(resetImageChoose)
         setSelectChar16(resetImageChoose)
+
+        setbackSize1('6vw 5vw')
+        setbackSize2('6vw 5vw')
+        setbackSize3('6vw 5vw')
+        setbackSize4('6vw 5vw')
+        setbackSize5('6vw 5vw')
+        setbackSize6('6vw 5vw')
+        setbackSize7('6vw 5vw')
+        setbackSize8('6vw 5vw')
+        setbackSize9('6vw 5vw')
+        setbackSize10('6vw 5vw')
+        setbackSize11('6vw 5vw')
+        setbackSize12('6vw 5vw')
+        setbackSize13('6vw 5vw')
+        setbackSize14('6vw 5vw')
+        setbackSize15('6vw 5vw')
+        setbackSize16('6vw 5vw')
 
         setpickChar1(resetImagePicked)
         setpickChar2(resetImagePicked)
@@ -909,8 +1008,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar1} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
-                                // backgroundSize: '100% 100%'
+                                ...transitionStyles[state],
+                                backgroundSize: backSize1
                                 }}onClick={e => handleCurrent(e, 'Char1', true, false)}/>
                             )}
                         </Transition>
@@ -918,7 +1017,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar2} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize2
                                 }}onClick={e => handleCurrent(e, 'Char2', true, false)}/>
                             )}
                         </Transition>
@@ -926,7 +1026,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar3} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize3
                                 }}onClick={e => handleCurrent(e, 'Char3', true, false)}/>
                             )}
                         </Transition>
@@ -934,7 +1035,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar4} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize4
                                 }}onClick={e => handleCurrent(e, 'Char4', true, false)}/>
                             )}
                         </Transition>
@@ -945,7 +1047,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar5} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize5
                                 }}onClick={e => handleCurrent(e, 'Char5', true, false)}/>
                             )}
                         </Transition>
@@ -953,7 +1056,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar6} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize6
                                 }}onClick={e => handleCurrent(e, 'Char6', true, false)}/>
                             )}
                         </Transition>
@@ -961,7 +1065,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar7} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize7
                                 }}onClick={e => handleCurrent(e, 'Char7', true, false)}/>
                             )}
                         </Transition>
@@ -969,7 +1074,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar8} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize8
                                 }}onClick={e => handleCurrent(e, 'Char8', true, false)}/>
                             )}
                         </Transition>
@@ -990,7 +1096,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar9} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize9
                                 }}onClick={e => handleCurrent(e, 'Char9', true, false)}/>
                             )}
                         </Transition>
@@ -998,7 +1105,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar10} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize10
                                 }}onClick={e => handleCurrent(e, 'Char10', true, false)}/>
                             )}
                         </Transition>
@@ -1006,7 +1114,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar11} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize11
                                 }}onClick={e => handleCurrent(e, 'Char11', true, false)}/>
                             )}
                         </Transition>
@@ -1014,7 +1123,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar12} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize12
                                 }}onClick={e => handleCurrent(e, 'Char12', true, false)}/>
                             )}
                         </Transition>
@@ -1024,7 +1134,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar13} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize13
                                 }}onClick={e => handleCurrent(e, 'Char13', true, false)}/>
                             )}
                         </Transition>
@@ -1032,7 +1143,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar14} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize14
                                 }}onClick={e => handleCurrent(e, 'Char14', true, false)}/>
                             )}
                         </Transition>
@@ -1040,7 +1152,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar15} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize15
                                 }}onClick={e => handleCurrent(e, 'Char15', true, false)}/>
                             )}
                         </Transition>
@@ -1048,7 +1161,8 @@ export const Picked = () => {
                             {(state) => (
                             <img src={selectChar16} style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
+                                ...transitionStyles[state],
+                                backgroundSize: backSize16
                                 }}onClick={e => handleCurrent(e, 'Char16', true, false)}/>
                             )}
                         </Transition>
@@ -1185,14 +1299,14 @@ export const Picked = () => {
                 <div className='chooseChar'>
                     {
                         charA.map((image, index) => (
-                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, true,false, 0.2, 1, false))}></img>
+                            <img src={image} key={characterIdA[index]} alt="character" onClick={e => (handleSound(e, characterIdA[index], soundA), handleChoose(e, characterIdA[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, true,false, 0.2, 1, false), handleBackSize(e, currentChar))}></img>
                         ))
                     }
                 </div>
                 <div className='chooseChar'>
                     {
                         charB.map((image, index) => (
-                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, false,true, 1, 0.2, false))}></img>
+                            <img src={image} key={characterIdB[index]} alt="character" onClick={e => (handleSound(e, characterIdB[index], soundB), handleChoose(e, characterIdB[index], currentChar), handlePick(e, image, currentChar), toggleStart(e, false,true, 1, 0.2, false), handleBackSize(e, currentChar))}></img>
                         ))
                     }
                 </div>
