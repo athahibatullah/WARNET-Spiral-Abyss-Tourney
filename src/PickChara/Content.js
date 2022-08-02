@@ -9,31 +9,33 @@ export const Picked = () => {
     const [isPick, setIsPick] = useState()
     const [currentChar, setCurrentChar] = useState()
 
-    const [selectChar1, setSelectChar1] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar2, setSelectChar2] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar3, setSelectChar3] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar4, setSelectChar4] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar5, setSelectChar5] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar6, setSelectChar6] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar7, setSelectChar7] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar8, setSelectChar8] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar9, setSelectChar9] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar10, setSelectChar10] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar11, setSelectChar11] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar12, setSelectChar12] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar13, setSelectChar13] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar14, setSelectChar14] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar15, setSelectChar15] = useState(require('../asset/draft/placeholder_pick2.png'))
-    const [selectChar16, setSelectChar16] = useState(require('../asset/draft/placeholder_pick2.png'))
+    const [selectChar1, setSelectChar1] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar2, setSelectChar2] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar3, setSelectChar3] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar4, setSelectChar4] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar5, setSelectChar5] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar6, setSelectChar6] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar7, setSelectChar7] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar8, setSelectChar8] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar9, setSelectChar9] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar10, setSelectChar10] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar11, setSelectChar11] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar12, setSelectChar12] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar13, setSelectChar13] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar14, setSelectChar14] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar15, setSelectChar15] = useState(require('../asset S2/draft/kotak_pick.png'))
+    const [selectChar16, setSelectChar16] = useState(require('../asset S2/draft/kotak_pick.png'))
 
-    const [pickChar1, setpickChar1] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar2, setpickChar2] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar3, setpickChar3] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar4, setpickChar4] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar5, setpickChar5] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar6, setpickChar6] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar7, setpickChar7] = useState(require('../asset/draft/placeholder_picked.png'))
-    const [pickChar8, setpickChar8] = useState(require('../asset/draft/placeholder_picked.png'))
+    const [pickChar1, setpickChar1] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar2, setpickChar2] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar3, setpickChar3] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar4, setpickChar4] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar5, setpickChar5] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar6, setpickChar6] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar7, setpickChar7] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar8, setpickChar8] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar9, setpickChar9] = useState(require('../asset S2/draft/banned_char default.png'))
+    const [pickChar10, setpickChar10] = useState(require('../asset S2/draft/banned_char default.png'))
 
     const [inProp1, setInProp1] = useState(false);
     const [inProp2, setInProp2] = useState(false);
@@ -60,6 +62,8 @@ export const Picked = () => {
     const [inProp22, setInProp22] = useState(false);
     const [inProp23, setInProp23] = useState(false);
     const [inProp24, setInProp24] = useState(false);
+    const [inProp25, setInProp25] = useState(false);
+    const [inProp26, setInProp26] = useState(false);
     const [state, setState] = useState(false);
 
     const duration = 300;
@@ -183,6 +187,9 @@ export const Picked = () => {
             } 
         }
     }
+    // function handlePosition(e, current){
+
+    // }
     function handlePick(e, image, current){
         e.preventDefault();
         if(isPick){
@@ -217,6 +224,14 @@ export const Picked = () => {
             else if(current == 'Char8'){
                 setpickChar8(image)
                 setInProp24(!inProp24)
+            }
+            else if(current == 'Char9'){
+                setpickChar9(image)
+                setInProp25(!inProp25)
+            } 
+            else if(current == 'Char10'){
+                setpickChar10(image)
+                setInProp26(!inProp26)
             } 
         }
     }
@@ -672,6 +687,8 @@ export const Picked = () => {
     const [bannedChara6, setBannedChara6] = useState()
     const [bannedChara7, setBannedChara7] = useState()
     const [bannedChara8, setBannedChara8] = useState()
+    const [bannedChara9, setBannedChara9] = useState()
+    const [bannedChara10, setBannedChara10] = useState()
     
     function banChara(e, current){
         e.preventDefault(); 
@@ -747,11 +764,29 @@ export const Picked = () => {
                 setBannedChara8("brightness(50%)")
             }
             setInProp24(!inProp24)
+        }
+        else if(current == 'Char9'){
+            if(bannedChara9 == "brightness(50%)"){
+                setBannedChara9()    
+            }
+            else{
+                setBannedChara9("brightness(50%)")
+            }
+            setInProp25(!inProp25)
+        } 
+        else if(current == 'Char10'){
+            if(bannedChara10 == "brightness(50%)"){
+                setBannedChara10()    
+            }
+            else{
+                setBannedChara10("brightness(50%)")
+            }
+            setInProp26(!inProp26)
         } 
     }
     function resetChar(e, current){
         e.preventDefault();
-        let resetImage = require('../asset/draft/placeholder_pick2.png');
+        let resetImage = require('../asset S2/draft/kotak_pick.png');
         if(current == 'Char1') {
             setSelectChar1(resetImage)
             setInProp1(!inProp1)
@@ -819,8 +854,8 @@ export const Picked = () => {
     }
     function clearChar(e){ 
         e.preventDefault();
-        let resetImagePicked = require('../asset/draft/placeholder_picked.png');
-        let resetImageChoose = require('../asset/draft/placeholder_pick2.png');
+        let resetImagePicked = require('../asset S2/draft/banned_char default.png');
+        let resetImageChoose = require('../asset S2/draft/kotak_pick.png');
         setSelectChar1(resetImageChoose)
         setSelectChar2(resetImageChoose)
         setSelectChar3(resetImageChoose)
@@ -846,6 +881,8 @@ export const Picked = () => {
         setpickChar6(resetImagePicked)
         setpickChar7(resetImagePicked)
         setpickChar8(resetImagePicked)
+        setpickChar9(resetImagePicked)
+        setpickChar10(resetImagePicked)
 
         setBannedChara1()
         setBannedChara2()
@@ -855,6 +892,8 @@ export const Picked = () => {
         setBannedChara6()
         setBannedChara7()
         setBannedChara8()
+        setBannedChara9()
+        setBannedChara10()
     }
     return (
         <>  
@@ -871,6 +910,7 @@ export const Picked = () => {
                             <img src={selectChar1} style={{
                                 ...defaultStyle,
                                 ...transitionStyles[state]
+                                // backgroundSize: '100% 100%'
                                 }}onClick={e => handleCurrent(e, 'Char1', true, false)}/>
                             )}
                         </Transition>
@@ -1132,6 +1172,15 @@ export const Picked = () => {
                             }}onClick={e => handleCurrent(e, 'Char4', false, true)}/>
                         )}
                     </Transition>
+                    <Transition in={inProp21} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar5} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state],
+                            filter: bannedChara5
+                            }}onClick={e => handleCurrent(e, 'Char5', false, true)}/>
+                        )}
+                    </Transition>
                 </div>
                 <div className='chooseChar'>
                     {
@@ -1148,15 +1197,6 @@ export const Picked = () => {
                     }
                 </div>
                 <div className='pickedChar'>
-                    <Transition in={inProp21} timeout={300}>
-                        {(state) => (
-                        <img src={pickChar5} style={{
-                            ...defaultStyle,
-                            ...transitionStyles[state],
-                            filter: bannedChara5
-                            }}onClick={e => handleCurrent(e, 'Char5', false, true)}/>
-                        )}
-                    </Transition>
                     <Transition in={inProp22} timeout={300}>
                         {(state) => (
                         <img src={pickChar6} style={{
@@ -1182,6 +1222,24 @@ export const Picked = () => {
                             ...transitionStyles[state],
                             filter: bannedChara8
                             }}onClick={e => handleCurrent(e, 'Char8', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp25} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar9} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state],
+                            filter: bannedChara9
+                            }}onClick={e => handleCurrent(e, 'Char9', false, true)}/>
+                        )}
+                    </Transition>
+                    <Transition in={inProp26} timeout={300}>
+                        {(state) => (
+                        <img src={pickChar10} style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state],
+                            filter: bannedChara10
+                        }}onClick={e => handleCurrent(e, 'Char10', false, true)}/>
                         )}
                     </Transition>
                 </div>

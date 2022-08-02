@@ -1,5 +1,6 @@
 body{
-    background-color: #1d658c;
+    /* background-color: #1d658c; */
+    background-image: url("../asset S2/background.png");
     color: #fff;
 }
 h1{
@@ -16,34 +17,42 @@ h1{
 .containerPicked .playerA img{
     width: 6vw;
     height: 5vw;
-    border-bottom: 3px solid #f6f4f0;
-    border-radius: 10px;
+    /* border-bottom: 3px solid #f6f4f0;
+    border-radius: 10px; */
     margin: 5px;
     padding: 5px;
     flex-direction: row;
     justify-content: center;
     float: left;
-    background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%);
+    background-image: url("../asset S2/draft/kotak_pick.png");
+    background-size: 6vw 5vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%); */
 }
 .containerPicked .playerB img{
     width: 6vw;
     height: 5vw;
-    border-bottom: 3px solid #f6f4f0;
-    border-radius: 10px;
+    /* border-bottom: 3px solid #f6f4f0; */
+    /* border-radius: 10px; */
     margin: 5px;
     padding: 5px;
     flex-direction: row;
     justify-content: center;
     float: left;
-    background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%);
+    background-image: url("../asset S2/draft/kotak_pick.png");
+    background-size: 6vw 5vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-image: linear-gradient(to top, rgba(255,255,255, 0.3), transparent 50%); */
 }
-.containerPicked .halfRight img{
+/* .containerPicked .halfRight img{
     border-right: 3px solid;
     border-image: linear-gradient(to top, #f6f4f0 50%, transparent 50%) 1;
 }
 .containerPicked .halfLeft img{
     border-left: 3px solid;
-}
+} */
 .containerPicked .timer img{
     border: 0px;
     width: 2vw;
@@ -53,12 +62,15 @@ h1{
     cursor: pointer;
 }
 .teams p{
-    height: 2vw;
+    height: 3vw;
     width: 5vw;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 4vw;
-    font-size: 20px;
+    margin-top: 3vw;
+    font-size: 25px;
+    /* border-color: #8a7442; */
+    -webkit-text-stroke-width: 1.2px;
+    -webkit-text-stroke-color: #8a7442;
 }
 
 .containerChoose{
@@ -135,22 +147,17 @@ h1{
     width: 4vw;
     height: auto;
 }
-.teamsPicked{
-    transform: rotate(-90deg);
-    height: 50px;
-    margin-top: 10vw;
-}
-.teamsPicked2{
-    transform: rotate(90deg);
-    height: 50px;
-    margin-top: 10vw;
-}
 .dropDown{
     display: flex;
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    gap: 3w;
+    gap: 1vw;
+}
+.dropDown p{
+    font-size: 20px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #8a7442;
 }
 .autoComplete{
     display: flex;
@@ -162,8 +169,8 @@ h1{
 }
 .autoComplete .buttonStart{
     margin-bottom: 10px;
-    color: #1d658c;
-    border-color: #1d658c;
+    color: #8a7442;
+    border-color: #8a7442;
     width: 4vw;
     border-radius: 6px;
     font-weight: 600;
@@ -176,30 +183,30 @@ h1{
 }
 .footer .banA{
     margin-left: 5vw;
-    color: #1d658c;
-    border-color: #1d658c;
+    color: #8a7442;
+    border-color: #8a7442;
     border-radius: 6px;
     font-weight: 600;
     width: 4vw;
 }
 .footer .banB{
     margin-right: 5vw;
-    color: #1d658c;
-    border-color: #1d658c;
+    color: #8a7442;
+    border-color: #8a7442;
     border-radius: 6px;
     font-weight: 600;
     width: 4vw;
 }
 .footer .reset{
-    color: #1d658c;
-    border-color: #1d658c;
+    color: #8a7442;
+    border-color: #8a7442;
     border-radius: 6px;
     font-weight: 600;
     width: 4vw;
 }
 .footer .clear{
-    color: #1d658c;
-    border-color: #1d658c;
+    color: #8a7442;
+    border-color: #8a7442;
     border-radius: 6px;
     font-weight: 600;
     width: 4vw;
