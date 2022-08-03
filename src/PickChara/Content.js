@@ -1084,9 +1084,9 @@ export const Picked = () => {
                 <div className='timer'>
                     <div onClick={stopTimer} >{dispSecondsAsMins1(timer1)}</div>
                     <div className='flipTimer'>
-                        <img id='arrowLeft'src={require('../asset/draft/panah_kiri_shadow.png')} style={{opacity: arrowOpacity1}}/>
+                        <img id='arrowLeft'src={require('../asset S2/draft/panah_kiri_shadow.png')} style={{opacity: arrowOpacity1}}/>
                         <Flip></Flip>
-                        <img id='arrowRight' src={require('../asset/draft/panah_kanan_shadow.png')} style={{opacity: arrowOpacity2}}/>
+                        <img id='arrowRight' src={require('../asset S2/draft/panah_kanan_shadow.png')} style={{opacity: arrowOpacity2}}/>
                     </div>
                     <div>{dispSecondsAsMins2(timer2)}</div>
                 </div>
@@ -1390,7 +1390,7 @@ class Flip extends Component{
           <main>
             <Modal show={this.state.show} handleClose={this.hideModal}>
             </Modal>
-                <img id='logoMid' onClick={this.showModal} src={require('../asset/draft/logo.png')}/>
+                <img id='logoMid' onClick={this.showModal} src={require('../asset S2/draft/logo.png')}/>
           </main>
         );
     }
