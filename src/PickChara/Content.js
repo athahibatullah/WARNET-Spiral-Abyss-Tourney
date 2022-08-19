@@ -314,9 +314,9 @@ export const Picked = () => {
         { value: 'JesterLynn', label: 'JesterLynn' },
         { value: 'Lisel', label: 'Lisel' },
         { value: 'Lolix', label: 'Lolix' },
-        { value: 'Makayasa', label: 'Makayasa' },
         { value: 'Mila', label: 'Mila' },
         { value: 'Shirogane', label: 'Shirogane' },
+        { value: 'Shironeko', label: 'Shironeko' },
         { value: 'Soul_X', label: 'Soul_X' },
         { value: 'Woodyie', label: 'Woodyie' },
         { value: 'Xhota', label: 'Xhota' }
@@ -440,7 +440,7 @@ export const Picked = () => {
         }
         else if(account === 'His_Show'){
             charaList = importAll(
-                require.context('../asset S2/Peserta/', false, /\.png$/)
+                require.context('../asset S2/Peserta/His_Show', false, /\.png$/)
             )
             for(let i=0;i<charaList.length;i++){
                 filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
@@ -538,26 +538,6 @@ export const Picked = () => {
                 setSoundB(charaSound)
             } 
         }
-        else if(account === 'Makayasa'){
-            charaList = importAll(
-                require.context('../asset S2/Peserta/Makayasa', false, /\.png$/)
-            )
-            for(let i=0;i<charaList.length;i++){
-                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
-            }
-            for(let i=0;i<filterSoundId.length;i++){
-                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
-            }
-
-            if(team == 'A'){
-                setCharA(charaList)
-                setSoundA(charaSound)
-            } 
-            else if(team === 'B'){
-                setCharB(charaList)
-                setSoundB(charaSound)
-            } 
-        }
         else if(account === 'Mila'){
             charaList = importAll(
                 require.context('../asset S2/Peserta/Mila', false, /\.png$/)
@@ -581,6 +561,26 @@ export const Picked = () => {
         else if(account === 'Shirogane'){
             charaList = importAll(
                 require.context('../asset S2/Peserta/Shirogane', false, /\.png$/)
+            )
+            for(let i=0;i<charaList.length;i++){
+                filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
+            }
+            for(let i=0;i<filterSoundId.length;i++){
+                charaSound[filterSoundId[i]] = soundData[filterSoundId[i]]
+            }
+
+            if(team == 'A'){
+                setCharA(charaList)
+                setSoundA(charaSound)
+            } 
+            else if(team === 'B'){
+                setCharB(charaList)
+                setSoundB(charaSound)
+            } 
+        }
+        else if(account === 'Shironeko'){
+            charaList = importAll(
+                require.context('../asset S2/Peserta/Shironeko', false, /\.png$/)
             )
             for(let i=0;i<charaList.length;i++){
                 filterSoundId.push((charaList[i].split('/'))[3].split('.')[0])
